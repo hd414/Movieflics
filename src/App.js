@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Jumbotron from './components/jumbotron/jumbotron.component'
+import JumboData from '../src/fixtures/jumbo.json';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Jumbotron.Container>
+      {
+        JumboData.map(({ title, subTitle, image, alt, direction, id }) => {
+          return (
+            <Jumbotron key={id} direction={direction} >
+              <Jumbotron.Pane>
+                <Jumbotron.Title>{title}</Jumbotron.Title>
+                <Jumbotron.SubTitle>{subTitle}</Jumbotron.SubTitle>
+              </Jumbotron.Pane>
+              <Jumbotron.Pane>
+                <Jumbotron.Image src={image} alt={alt} />
+              </Jumbotron.Pane>
+            </Jumbotron>
+          )
+        })
+      }
+    </Jumbotron.Container>
   );
 }
 
