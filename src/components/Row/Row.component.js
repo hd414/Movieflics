@@ -124,11 +124,13 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
             {
                 showDetails &&
                 <div className="details">
+
                     <img
                         className="detail-image"
                         src={`${baseImgUrl}${movie.poster_path}`}
                         alt={movie?.name}
                     />
+
                     <div className="detail-text">
                         <h2>{movie?.name || movie?.original_title || movie?.title}</h2>
                         <h5>{truncate(movie?.overview, 500)}</h5>
