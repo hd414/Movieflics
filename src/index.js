@@ -4,12 +4,23 @@ import 'normalize.css';
 import App from './App';
 import { GlobalStyles } from './global_styles';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import firebase from './lib/firebase.prod';
+import { FirebaseContext } from './context/firebase';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalStyles />
-    <App />
-  </React.StrictMode>,
+
+  <BrowserRouter>
+    <React.StrictMode>
+      <FirebaseContext.Provider value={{ firebase }}>
+        <GlobalStyles />
+        <App />
+      </FirebaseContext.Provider>
+    </React.StrictMode>
+  </BrowserRouter>
+
+
+  ,
   document.getElementById('root')
 );
 
