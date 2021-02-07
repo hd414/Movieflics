@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import RowContainer from './containers/Row.container';
 import { IsProtectedPage, IsUserRedirect } from './helpers/routes';
 import { UseAuthListener } from './hooks/use-auth-listener';
-import Browse from './pages/browse';
 import { Home } from './pages/home';
 import Signin from './pages/signin';
 import Signup from './pages/signup';

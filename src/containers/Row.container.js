@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Banner from '../components/banner/banner.component'
-import Card from '../components/card/card.component'
 import Loading from '../components/loading/loading.component';
+import Modal from '../components/modal/modal.component';
+import ModalDetails from '../components/modal/modalDetails.component';
 import Navbar from '../components/Navbar/navbar.component';
 import Row from '../components/Row/Row.component'
 import { FirebaseContext } from '../context/firebase';
@@ -9,7 +10,10 @@ import requests from '../request';
 import ProfileContainer from './profile';
 
 
+
+
 const RowContainer = () => {
+
 
     const { firebase } = useContext(FirebaseContext);
 
@@ -17,6 +21,9 @@ const RowContainer = () => {
 
     const [profile, setProfile] = useState({});
     const [loading, setloading] = useState(true);
+    const [backdrop, setBackdrop] = useState(false);
+
+    const [movie, setMovie] = useState('');
 
 
     useEffect(() => {
@@ -26,6 +33,17 @@ const RowContainer = () => {
         }, 3000)
     }, [profile.displayName]);
 
+
+    function BackdropHandler(movie) {
+        setMovie(movie);
+        console.log("backdrop clicked");
+        console.log(backdrop, movie);
+        setBackdrop(true);
+    }
+
+    function onCloseHandler() {
+        setBackdrop(false);
+    }
 
 
 
@@ -39,19 +57,66 @@ const RowContainer = () => {
                                 (<Loading src={user.photoURL} />) : <Loading.ReleaseBody />
                         }
                         <Navbar />
-                        <Banner />
-                        <Card.Group>
+                        <Banner BackdropHandler={BackdropHandler} />
 
-                            <Row title={'Trending Now'} fetchUrl={requests.fetchTrending} isLargeRow />
-                            <Row title={'Anime'} fetchUrl={requests.fetchAnime} />
-                            <Row title={'Top Rated'} fetchUrl={requests.fetchTopRated} />
-                            <Row title={'Netflix Originals'} fetchUrl={requests.fetchNetflixOriginals} />
-                            <Row title={'Comedy Movies'} fetchUrl={requests.fetchComedyMovies} />
-                            <Row title={'Action Movies'} fetchUrl={requests.fetchActionMovies} />
-                            <Row title={'Horror Movies'} fetchUrl={requests.fetchHorrorMovies} />
-                            <Row title={'Romance Movies'} fetchUrl={requests.fetchRomanceMovies} />
+                        {
+                            backdrop &&
+                            (
 
-                        </Card.Group>
+                                <Modal
+                                    show={backdrop}
+                                    close={onCloseHandler}
+                                    movie={movie}
+                                >
+                                    <ModalDetails movie={movie} />
+                                </Modal>
+                            )
+                        }
+
+
+
+                        <Row title={'Trending Now'}
+                            fetchUrl={requests.fetchTrending}
+                            isLargeRow
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Anime'}
+                            fetchUrl={requests.fetchAnime}
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Top Rated'}
+                            fetchUrl={requests.fetchTopRated}
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Netflix Originals'}
+                            fetchUrl={requests.fetchNetflixOriginals}
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Comedy Movies'}
+                            fetchUrl={requests.fetchComedyMovies}
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Action Movies'}
+                            fetchUrl={requests.fetchActionMovies}
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Horror Movies'}
+                            fetchUrl={requests.fetchHorrorMovies}
+                            BackdropHandler={BackdropHandler}
+                        />
+                        <Row
+                            title={'Romance Movies'}
+                            fetchUrl={requests.fetchRomanceMovies}
+                            BackdropHandler={BackdropHandler}
+                        />
+
+
 
                        )
                     </>

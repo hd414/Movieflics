@@ -4,20 +4,11 @@ import requests from '../../request';
 import './banner.styles.css';
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
-const Banner = () => {
+const Banner = ({ BackdropHandler }) => {
 
     const [movie, setMovie] = useState([]);
-    const [trailerUrl, setTrailerUrl] = useState('');
 
-    const opts = {
 
-        height: '390',
-        width: '100%',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 1,
-        },
-    }
 
 
     useEffect(() => {
@@ -33,25 +24,7 @@ const Banner = () => {
 
     const handleplay = () => {
 
-        if (trailerUrl) {
-            setTrailerUrl('');
-        }
-        else {
-
-            movieTrailer(movie?.name || movie?.original_title || movie?.title || "")
-                .then((url) => {
-                    // console.log(movie?.name)
-                    // console.log('url', url);
-                    if (!url) {
-                        setTrailerUrl()
-                    }
-                    const urlParam = new URLSearchParams(new URL(url).search);
-                    setTrailerUrl(urlParam.get('v'));
-                }).catch(error =>
-                    console.log(error));
-        }
-
-
+        BackdropHandler(movie);
 
     }
 
@@ -89,7 +62,7 @@ const Banner = () => {
 
                 <div className="banner-fade-bottom" />
             </header>
-            {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+
         </div>
     )
 }
