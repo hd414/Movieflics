@@ -4,7 +4,7 @@ import YouTube from 'react-youtube';
 import axios from '../../axios';
 
 
-const ModalDetails = ({ movie }) => {
+const ModalDetails = ({ movie, playNow }) => {
     const opts = {
 
         height: '500vh',
@@ -15,6 +15,9 @@ const ModalDetails = ({ movie }) => {
         },
     }
 
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
 
 
     const [trailerUrl, setTrailerUrl] = useState('');
@@ -42,6 +45,10 @@ const ModalDetails = ({ movie }) => {
 
 
     }
+    if (playNow == true) {
+        PlayTrailer();
+        playNow = false;
+    }
 
     if (trailerUrl) {
         return (
@@ -61,7 +68,7 @@ const ModalDetails = ({ movie }) => {
                     <div>Release Date: {movie.first_air_date || movie.release_date}</div>
                 </div>
                 <div className="modal-body">
-                    {movie.overview}
+                    {truncate(movie.overview, 400)}
                 </div>
                 <div className="modal-btn">
                     <button className="btn1" onClick={PlayTrailer}>

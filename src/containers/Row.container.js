@@ -22,6 +22,7 @@ const RowContainer = () => {
     const [profile, setProfile] = useState({});
     const [loading, setloading] = useState(true);
     const [backdrop, setBackdrop] = useState(false);
+    const [play, setplay] = useState(false);
 
     const [movie, setMovie] = useState('');
 
@@ -31,18 +32,24 @@ const RowContainer = () => {
         setTimeout(() => {
             setloading(false);
         }, 3000)
-    }, [profile.displayName]);
+    }, []);
 
 
     function BackdropHandler(movie) {
         setMovie(movie);
-        console.log("backdrop clicked");
-        console.log(backdrop, movie);
+        // console.log("backdrop clicked");
+        // console.log(backdrop, movie);
         setBackdrop(true);
+    }
+
+    function playHandler(movie) {
+        setplay(true);
+        BackdropHandler(movie);
     }
 
     function onCloseHandler() {
         setBackdrop(false);
+        setplay(false);
     }
 
 
@@ -57,7 +64,7 @@ const RowContainer = () => {
                                 (<Loading src={user.photoURL} />) : <Loading.ReleaseBody />
                         }
                         <Navbar />
-                        <Banner BackdropHandler={BackdropHandler} />
+                        <Banner BackdropHandler={playHandler} />
 
                         {
                             backdrop &&
@@ -68,7 +75,7 @@ const RowContainer = () => {
                                     close={onCloseHandler}
                                     movie={movie}
                                 >
-                                    <ModalDetails movie={movie} />
+                                    <ModalDetails movie={movie} playNow={play} />
                                 </Modal>
                             )
                         }
@@ -79,41 +86,49 @@ const RowContainer = () => {
                             fetchUrl={requests.fetchTrending}
                             isLargeRow
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Anime'}
                             fetchUrl={requests.fetchAnime}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Top Rated'}
                             fetchUrl={requests.fetchTopRated}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Netflix Originals'}
                             fetchUrl={requests.fetchNetflixOriginals}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Comedy Movies'}
                             fetchUrl={requests.fetchComedyMovies}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Action Movies'}
                             fetchUrl={requests.fetchActionMovies}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Horror Movies'}
                             fetchUrl={requests.fetchHorrorMovies}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
                         <Row
                             title={'Romance Movies'}
                             fetchUrl={requests.fetchRomanceMovies}
                             BackdropHandler={BackdropHandler}
+                            playHandler={playHandler}
                         />
 
 

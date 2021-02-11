@@ -2,8 +2,7 @@ import axios from '../../axios';
 import React, { useEffect, useState } from 'react';
 import requests from '../../request';
 import './banner.styles.css';
-import YouTube from 'react-youtube';
-import movieTrailer from 'movie-trailer';
+
 const Banner = ({ BackdropHandler }) => {
 
     const [movie, setMovie] = useState([]);

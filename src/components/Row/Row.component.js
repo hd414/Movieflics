@@ -1,11 +1,42 @@
 import axios from '../../axios';
 import React, { useState, useEffect } from 'react';
 import './row.styles.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import ButtonGroup from '../Button_Group/ButtonGroup';
+import CarouselItem from '../Carousel/Carousel.item';
 
 
 
+const responsive = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 8,
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1060 },
+        items: 5.5,
+        slidesToSlide: 3,
+    },
+    tablet: {
+        breakpoint: { max: 1060, min: 800 },
+        items: 4,
+        slidesToSlide: 2,
+    },
+    smallerDevice: {
+        breakpoint: { max: 800, min: 500 },
+        items: 3,
+        slidesToSlide: 1,
+    },
+    mobile: {
+        breakpoint: { max: 500, min: 0 },
+        items: 2,
+        slidesToSlide: 1,
+    },
+};
 
-const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler }) => {
+
+const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
 
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
     const [movies, setMovies] = useState([]);
@@ -64,6 +95,9 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler }) => {
     //     setShowDetails(false);
 
     // }
+    const HandlePlay = (movie) => {
+        playHandler(movie);
+    }
 
     const handleClick = (movie) => {
         BackdropHandler(movie);
@@ -100,12 +134,34 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler }) => {
         setSelectedIndex(nextIndex);
     }
 
+
+
     return (
 
         <div className="row" >
             <h1>{title}</h1>
 
-            <div className="row-posters">
+            <Carousel
+                swipeable
+                draggable
+                arrows={false}
+                responsive={responsive}
+                customButtonGroup={<ButtonGroup />}
+                ssr={true} // means to render carousel on server-side.
+                infinite={true}
+                autoPlay={false}
+                autoPlaySpeed={1000}
+                keyBoardControl={true}
+                customTransition="all .5 ease-in-out"
+                transitionDuration={500}
+                containerClass="carousel-container row-posters hover-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                deviceType={''}
+                customDot={null}
+                showDots={false}
+                itemClass="carousel-item row-poster hover-item"
+            >
+
 
 
 
@@ -113,21 +169,29 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler }) => {
                     movies.map((movie) => {
                         return (
 
-                            <img
+                            // <img
+                            //     key={movie.id}
+                            //     onClick={() => handleClick(movie)}
+                            //     className={`row-poster ${isLargeRow ? 'row-poster-large' : ''}`}
+                            //     src={`${baseImgUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                            //         }`}
+                            //     alt={movie.name}
+                            // />
+                            <CarouselItem
                                 key={movie.id}
-                                onClick={() => handleClick(movie)}
-                                className={`row-poster ${isLargeRow ? 'row-poster-large' : ''}`}
-                                src={`${baseImgUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path
-                                    }`}
-                                alt={movie.name}
+                                movie={movie}
+                                image={baseImgUrl + movie.poster_path}
+                                handleItemExpand={handleClick}
+                                HandlePlay={HandlePlay}
+                                title={movie.title}
+
                             />
-
-
                         )
                     })
                 }
 
-            </div>
+
+            </Carousel>
             {/* 
             {
                 showDetails &&

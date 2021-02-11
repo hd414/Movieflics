@@ -1,0 +1,217 @@
+.carousel-item:hover .item-informations,
+.item-result:hover .item-informations {
+  visibility: visible;
+  opacity: 1;
+}
+
+.carousel-img {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 90%;
+  min-height: 100%;
+  border-radius: 15px;
+ 
+}
+
+.carousel-img {
+  width: 90%;
+  height: 100%;
+  background-color: #141414;
+  position: relative;
+  z-index: 0;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.carousel-img:hover {
+  outline: #141414 0.1vw solid;
+}
+
+/* .caret-item-open {
+  position: absolute;
+  font-size: 2.5vw;
+  color: #fff;
+  bottom: -2vw;
+} */
+
+.item-layer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.item-informations {
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  transition: all 0.8s ease-in-out;
+  background: linear-gradient(
+    77deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 80%
+  );
+}
+
+.item-card-interaction {
+  min-height: 85%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.item-more-infos-icon {
+  filter: invert(100%) sepia(87%) saturate(1%) hue-rotate(88deg) brightness(104%) contrast(101%);
+  padding: 0.2vw;
+  min-height: 35%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#chevron-down {
+  width: 4.4vw;
+  box-shadow:tomato;
+}
+
+#play-with-ring {
+  width: 3vw;
+  padding-bottom: 0.2vw;
+}
+
+ .item-play-button:hover polygon {
+  fill: #e50914;
+}
+
+.audio-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-actions > svg,
+.audio-icon > svg {
+  margin-top: 0.3vw;
+  border-radius: 50%;
+  padding: 0.2vw;
+  background-color: rgba(0, 0, 0, 0.68);
+  width: 0.55vw;
+  height: 0.55vw;
+  border: 0.1vw solid grey;
+}
+
+.item-actions > svg > path {
+  fill: #fff;
+}
+
+.item-actions > svg:hover,
+.audio-icon > svg:hover {
+  border-color: #fff;
+  transform: scale(1.1);
+}
+.item-play-button{
+  width: 20%;
+}
+
+.item-play,
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1vw;
+  box-sizing: border-box;
+}
+
+.item-actions {
+  width: 10%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 1.5vw;
+  width: 100%;
+  color: white;
+}
+
+.item-popularity {
+  font-size: 0.7vw;
+  color: rgba(69, 142, 26, 1);
+  font-weight: bold;
+}
+
+.item-card-interaction {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.item-more-infos-icon:hover{
+    filter: invert(19%) sepia(83%) saturate(6250%) hue-rotate(350deg) brightness(87%) contrast(109%);
+}
+
+.chevron-down-active {
+    
+  display: flex;
+  padding: 0.5vw;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(0, 0%, 0%, 0.21);
+}
+
+#chevron-down {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.chevron-down-active > #chevron-down {
+  width: 3vw;
+}
+
+.carousel-img:hover #chevron-down {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .item-play,
+  .item-actions {
+    padding: 1w;
+  }
+}
+
+
+/* .row-poster{
+    width: 100%;
+    object-fit: contain;
+    max-height: 250px;
+    margin-right: 10px;
+    transition: transform 450ms;
+}
+
+.row-poster:hover{
+    transform :scale(1.1);
+}
+
+.row-poster-large{
+    max-height: 250px;
+}
+
+.row-poster-large:hover{
+    transform: scale(1.09);
+    opacity: 1;
+
+} */

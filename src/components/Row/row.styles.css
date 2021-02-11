@@ -4,6 +4,7 @@ h1{
 
 .row{
     margin-left: 10px;
+    
 }
 
 .row-posters{
@@ -12,6 +13,7 @@ h1{
     overflow-y: hidden;
     overflow-x:scroll;
     padding: 20px;
+    
 }
 
 .row-posters::-webkit-scrollbar{
@@ -19,15 +21,17 @@ h1{
 }
 
 .row-poster{
-    width: 100%;
+    width: 100px;
+    height: 300px;
     object-fit: contain;
-    max-height: 150px;
     margin-right: 10px;
     transition: transform 450ms;
+    padding:3px;
+    border-radius: 200px;
 }
 
 .row-poster:hover{
-    transform :scale(1.1);
+   
 }
 
 .row-poster-large{
@@ -35,7 +39,7 @@ h1{
 }
 
 .row-poster-large:hover{
-    transform: scale(1.09);
+    transform: translateY(10px);
     opacity: 1;
 
 }
@@ -83,3 +87,20 @@ h1{
 
 
 
+
+.carousel-container.hover-container .hover-item{
+   
+    transform: translateY(10%);
+    
+  }
+  
+  .hover-item:hover ~ .hover-item {
+    transform: translateY(10%);
+  }
+  
+  .hover-item:hover {
+      
+    cursor: pointer;
+    transform: scale(1.06) !important;
+    z-index: 100;
+  }

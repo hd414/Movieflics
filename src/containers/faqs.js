@@ -2,6 +2,7 @@ import React from 'react';
 import { Accordion } from '../components/accordion/accordion.component';
 import FaqData from '../../src/fixtures/faq.json';
 import OptForm from '../components/opt-form/optform.component';
+import { Link } from 'react-router-dom';
 
 const FaqsContainer = () => {
     return (
@@ -22,7 +23,7 @@ const FaqsContainer = () => {
 
             <OptForm>
                 <OptForm.Input placeholder="Email address" />
-                <OptForm.Button>Try it now</OptForm.Button>
+                <Link to="/Signin"><OptForm.Button>Try it now</OptForm.Button></Link>
                 <OptForm.Break />
                 <OptForm.Text>Ready to watch? Enter your email to create or restart your membership.</OptForm.Text>
             </OptForm>
