@@ -28,7 +28,7 @@ const Signup = () => {
                         photoURL: Math.floor(Math.random() * 5) + 1
                     })
                     .then(() => {
-                        history.push('/browse')
+                        history.push('/signin')
                     })
 
 

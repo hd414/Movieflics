@@ -1,9 +1,9 @@
 import React from 'react';
-import './Carousel.item.css';
+import './search.styles.scss';
 
 import { ReactComponent as PlayRing } from '../../assets/playWithRing.svg';
 import { ReactComponent as ChevronDown } from '../../assets/chevronDown.svg';
-const CarouselItem = ({ key, movie, image, handleItemExpand, title, HandlePlay }) => {
+const CarouselItem = ({ key, item, image, handleItemExpand, title, HandlePlay }) => {
 
 
 
@@ -14,31 +14,35 @@ const CarouselItem = ({ key, movie, image, handleItemExpand, title, HandlePlay }
         outline: 'none',
         opacity: '1',
         border: "none",
+        cursot: "pointer"
     };
 
     return (
+
         <div
             key={key}
-            className="carousel-img "
+            className="search-img"
             style={itemStyle}
+            onClick={() => handleItemExpand(item)}
         >
-            { (
-                <div className="item-informations" onClick={() => handleItemExpand(movie)}>
-                    <div className="item-card-interaction">
-                        <div className="item-play" >
-                            <div className="item-play-button" onClick={() => HandlePlay(movie)}>
+            {(
+                <div className="search-item-informations">
+                    <div className="search-item-card-interaction">
+                        <div className="search-item-play" >
+                            <div className="search-item-play-button" onClick={() => HandlePlay(item)}>
                                 <PlayRing />
                             </div>
-                            <span className="item-title">{movie.title || movie.name}</span>
+                            <span className="search-item-title">{item.title || item.name}</span>
                         </div>
                     </div>
-                    <div className="item-more-infos-icon" onClick={() => handleItemExpand(movie)}>
+                    <div className="search-item-more-infos-icon" onClick={() => handleItemExpand(item)}>
                         <ChevronDown />
                     </div>
                 </div>
             )}
 
         </div >
+
     );
 }
 

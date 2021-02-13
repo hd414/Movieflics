@@ -4,11 +4,12 @@ import Form from '../components/form/form.component';
 import { FooterContainer } from '../containers/footer'
 import HeaderContainer from '../containers/header'
 import { FirebaseContext } from '../context/firebase';
+import { ProfileContext } from '../context/profile.context';
 
 const Signin = () => {
     const history = useHistory();
     const { firebase } = useContext(FirebaseContext);
-
+    const { showProfile, setShowProfile } = useContext(ProfileContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -20,6 +21,7 @@ const Signin = () => {
 
         return firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
+                setShowProfile(true);
                 history.push('/browse');
             })
             .catch((error) => {

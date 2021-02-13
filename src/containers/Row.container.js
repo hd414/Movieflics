@@ -6,6 +6,7 @@ import ModalDetails from '../components/modal/modalDetails.component';
 import Navbar from '../components/Navbar/navbar.component';
 import Row from '../components/Row/Row.component'
 import { FirebaseContext } from '../context/firebase';
+import { ProfileContext } from '../context/profile.context';
 import requests from '../request';
 import ProfileContainer from './profile';
 
@@ -14,23 +15,20 @@ import ProfileContainer from './profile';
 
 const RowContainer = () => {
 
-
+    const { showProfile, setShowProfile, loading, setLoading } = useContext(ProfileContext);
     const { firebase } = useContext(FirebaseContext);
-
     const user = firebase.auth().currentUser || {};
 
     const [profile, setProfile] = useState({});
-    const [loading, setloading] = useState(true);
+    // const [loading, setloading] = useState(true);
     const [backdrop, setBackdrop] = useState(false);
     const [play, setplay] = useState(false);
-
     const [movie, setMovie] = useState('');
 
 
     useEffect(() => {
-
         setTimeout(() => {
-            setloading(false);
+            setLoading(false);
         }, 3000)
     }, []);
 
@@ -53,17 +51,18 @@ const RowContainer = () => {
     }
 
 
+    console.log("loading", loading);
 
     return (
         <div>
             {
-                profile.displayName ?
+                !showProfile ?
                     (<>
                         {
                             loading ?
                                 (<Loading src={user.photoURL} />) : <Loading.ReleaseBody />
                         }
-                        <Navbar />
+
                         <Banner BackdropHandler={playHandler} />
 
                         {
