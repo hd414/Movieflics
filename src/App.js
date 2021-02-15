@@ -23,6 +23,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   console.log("showProfile", showProfile);
+  console.log("loading", loading);
 
   if (location.pathname === '/browse' || location.pathname === '/ResultPage') {
     return (
@@ -65,7 +66,7 @@ function App() {
           exact
           path="/signin"
           render={() => (<IsUserRedirect user={user} exact loggedInPath={'/browse'}>
-            <ProfileContext.Provider value={{ showProfile, setShowProfile }}>
+            <ProfileContext.Provider value={{ showProfile, setShowProfile, loading, setLoading }}>
               <Signin />
             </ProfileContext.Provider>
           </IsUserRedirect>)}

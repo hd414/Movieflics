@@ -38,10 +38,15 @@ const Banner = ({ BackdropHandler }) => {
             <header className="banner"
 
                 style={{
-                    backgroundSize: "cover",
+
                     backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
                     backgroundPosition: "center center",
-                    padding: "10px"
+                    padding: "10px",
+                    backgroundSize: "cover",
+                    resize: "both",
+                    backgroundRepeat: "no-repeat",
+
+
                 }}
 
             >

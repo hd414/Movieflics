@@ -79,19 +79,41 @@ const Search = () => {
                 <h1></h1>
                 <h1 className="search-page__title">Search Results</h1>
                 <div className="search-page__outer">
-                    <div className="search-page__inner">
-                        {searchItems.map(item =>
-                            item.poster_path
-                                ?
-                                <SearchComponent
-                                    key={item.id}
-                                    item={item}
-                                    image={baseImgUrl + item.poster_path}
-                                    handleItemExpand={BackdropHandler}
-                                    HandlePlay={playHandler}
-                                    title={item.title} /> : null
-                        )}
-                    </div>
+                    {
+                        searchItems?.length == 0 ?
+                            <div style={{ color: "white", marginLeft: "0%", lineHeight: "3" }}>
+                                <h2>No Search Result available</h2>
+                                <ul>
+                                    <li><h4>Try different keyword</h4></li>
+                                    <li><h4>keyword may have some spelling error</h4></li>
+                                    <li><h4>Internet may be slow</h4></li>
+                                </ul>
+                            </div>
+                            :
+                            (
+                                <div className="search-page__inner">
+                                    {
+
+
+                                        searchItems.map(item =>
+                                            item.poster_path
+                                                ?
+                                                <SearchComponent
+                                                    key={item.id}
+                                                    item={item}
+                                                    image={baseImgUrl + item.poster_path}
+                                                    handleItemExpand={BackdropHandler}
+                                                    HandlePlay={playHandler}
+                                                    title={item.title} /> : null
+                                        )
+
+
+
+                                    }
+                                </div>
+                            )
+                    }
+
                 </div>
             </div>
         </div>

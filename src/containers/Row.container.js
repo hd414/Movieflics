@@ -3,7 +3,6 @@ import Banner from '../components/banner/banner.component'
 import Loading from '../components/loading/loading.component';
 import Modal from '../components/modal/modal.component';
 import ModalDetails from '../components/modal/modalDetails.component';
-import Navbar from '../components/Navbar/navbar.component';
 import Row from '../components/Row/Row.component'
 import { FirebaseContext } from '../context/firebase';
 import { ProfileContext } from '../context/profile.context';
@@ -27,10 +26,13 @@ const RowContainer = () => {
 
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000)
-    }, []);
+        if (!showProfile) {
+
+            setTimeout(() => {
+                setLoading(false);
+            }, 3000)
+        }
+    }, [showProfile]);
 
 
     function BackdropHandler(movie) {

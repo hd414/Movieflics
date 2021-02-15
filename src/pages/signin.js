@@ -9,7 +9,7 @@ import { ProfileContext } from '../context/profile.context';
 const Signin = () => {
     const history = useHistory();
     const { firebase } = useContext(FirebaseContext);
-    const { showProfile, setShowProfile } = useContext(ProfileContext);
+    const { showProfile, setShowProfile, loading, setLoading } = useContext(ProfileContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -22,6 +22,7 @@ const Signin = () => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
                 setShowProfile(true);
+                setLoading(true);
                 history.push('/browse');
             })
             .catch((error) => {
