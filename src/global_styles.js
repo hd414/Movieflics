@@ -19,5 +19,10 @@ export const GlobalStyles = createGlobalStyle`
    text-decoration:none;
    color:white;
  }
+ @media (max-width: 700px){
+    .fvevIb {
+   display:flex;
+}
+
 
 `;
