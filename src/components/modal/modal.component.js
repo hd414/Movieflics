@@ -4,7 +4,7 @@ import Backdrop from './backdrop';
 
 const Modal = (props) => {
     console.log(props)
-    const url = 'https://image.tmdb.org/t/p/original' + props.movie.backdrop_path;
+    const url = 'https://image.tmdb.org/t/p/original' + `${props.movie.backdrop_path ? props.movie.backdrop_path : props.movie.poster_path}`;
     const backgroundStyle = {
         backgroundImage: `url(${url})`,
         backgroundSize: 'cover',
