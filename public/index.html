@@ -17,19 +17,19 @@
     }
 
     circle:nth-of-type(1) {
-      fill: #ffffff;
+      fill: #d41010;
     }
 
     circle:nth-of-type(2) {
-      fill: #fcd837;
+      fill: #eb2727;
     }
 
     circle:nth-of-type(3) {
-      fill: #f9a11f;
+      fill: #d63114;
     }
 
     circle:nth-of-type(4) {
-      fill: #f27c21;
+      fill: #8d1505;
     }
 
     #clackers {
@@ -122,19 +122,30 @@
     come alive." - Howard Thurman</noscript>
   <div id="root"></div>
   <script>
-    document.onreadystatechange = function () {
-      if (document.readyState !== "complete") {
-        document.querySelector(
-          "body").style.visibility = "hidden";
-        document.querySelector(
-          "#loader").style.visibility = "visible";
-      } else {
-        document.querySelector(
-          "#loader").style.display = "none";
-        document.querySelector(
-          "body").style.visibility = "visible";
-      }
-    }; 
+    // document.onreadystatechange = function () {
+    //   if (document.readyState !== "complete") {
+    //     document.querySelector(
+    //       "body").style.visibility = "hidden";
+    //     document.querySelector(
+    //       "#loader").style.visibility = "visible";
+    //   } else {
+    //     document.querySelector(
+    //       "#loader").style.display = "none";
+    //     document.querySelector(
+    //       "body").style.visibility = "visible";
+    //   }
+    // };
+    document.querySelector(
+      "body").style.visibility = "hidden";
+    document.querySelector(
+      "#loader").style.visibility = "visible";
+    setTimeout(function () {
+      document.querySelector(
+        "#loader").style.display = "none";
+      document.querySelector(
+        "body").style.visibility = "visible";
+
+    }, 4000)
   </script>
 </body>
 

@@ -2,8 +2,16 @@
 .item-result:hover .item-informations {
   visibility: visible;
   opacity: 1;
+  
 }
 
+@media (max-width: 700px) {
+  .item-play-button {
+  visibility: hidden;
+  opacity: 1;
+  
+}
+ }
 .carousel-img {
   box-sizing: border-box;
   display: flex;
@@ -138,7 +146,7 @@
 
 .item-title {
   font-weight: 600;
-  font-size: 1.2vw;
+  font-size: 100%;
   width: 100%;
   color: white;
 }

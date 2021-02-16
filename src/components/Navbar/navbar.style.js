@@ -86,12 +86,18 @@ export const SearchInput = styled.input`
   height: 30px;
   font-size: 14px;
   border-radius: 4px;
-  margin-left: ${({ active }) => (active === true ? '10px' : '0')};
-  padding: ${({ active }) => (active === true ? '0 10px' : '0')};
+  margin-left: ${({ active }) => (active === true ? '1rem' : '0')};
+  padding: ${({ active }) => (active === true ? '0 0.5rem' : '0')};
   opacity: ${({ active }) => (active === true ? '1' : '0')};
-  width: ${({ active }) => (active === true ? '200px' : '0px')};
+  width: ${({ active }) => (active === true ? '11rem' : '0px')};
   &:focus {
     background-color: rgba(0, 0, 0, 0.8);
+  }
+  @media (max-width: 700px) {
+    margin-left: ${({ active }) => (active === true ? '0.6rem' : '0')};
+  padding: ${({ active }) => (active === true ? '0 0.5rem' : '0')};
+  opacity: ${({ active }) => (active === true ? '1' : '0')};
+  width: ${({ active }) => (active === true ? '8rem' : '0px')};
   }
 `;
 
@@ -105,7 +111,7 @@ export const Search = styled.div`
     cursor: pointer;
   }
   @media (max-width: 700px) {
-    display: none;
+   
   }
 `;
 
