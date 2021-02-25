@@ -7,7 +7,7 @@ import logo from '../logo.svg';
 const ProfileContainer = ({ user, setProfile }) => {
 
     const { showProfile, setShowProfile } = useContext(ProfileContext);
-    console.log("showProfile", showProfile);
+    // console.log("showProfile", showProfile);
     const newStyle = {
         zIndex: "1000",
         backgroundColor: "black"

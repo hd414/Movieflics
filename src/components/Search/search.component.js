@@ -3,7 +3,7 @@ import './search.styles.scss';
 
 import { ReactComponent as PlayRing } from '../../assets/playWithRing.svg';
 import { ReactComponent as ChevronDown } from '../../assets/chevronDown.svg';
-const CarouselItem = ({ key, item, image, handleItemExpand, title, HandlePlay }) => {
+const SearchComponent = ({ key, item, image, handleItemExpand, title, HandlePlay }) => {
 
 
 
@@ -49,4 +49,4 @@ const CarouselItem = ({ key, item, image, handleItemExpand, title, HandlePlay })
 
 
 
-export default CarouselItem;
+export default SearchComponent;

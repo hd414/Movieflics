@@ -10,8 +10,8 @@ const Signin = () => {
     const history = useHistory();
     const { firebase } = useContext(FirebaseContext);
     const { showProfile, setShowProfile, loading, setLoading } = useContext(ProfileContext);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('h@gmail.com');
+    const [password, setPassword] = useState('123456');
     const [error, setError] = useState('');
 
     const isInvalid = password == '' || email == '';

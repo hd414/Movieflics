@@ -49,7 +49,7 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
 
         async function fetchData() {
             const request = await axios.get(fetchUrl);
-            console.log('movies', request.data.results);
+            // console.log('movies', request.data.results);
             setMovies(request.data.results);
             return request;
         }

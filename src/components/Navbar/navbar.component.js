@@ -23,7 +23,7 @@ const Navbar = ({ }) => {
     const { firebase } = useContext(FirebaseContext);
 
     const user = firebase.auth().currentUser || {};
-    console.log("user--->", user);
+    // console.log("user--->", user);
 
     const [profile, setProfile] = useState({});
     const [loading, setloading] = useState(true);
@@ -45,7 +45,7 @@ const Navbar = ({ }) => {
     }
 
     useEffect(() => {
-        console.log("user", profile)
+        // console.log("user", profile)
         setTimeout(() => {
             setloading(false);
         }, 3000)
@@ -122,7 +122,7 @@ Navbar.Search = function NavbarSearch({ searchTerm, setSearchTerm, ...restProps 
     };
 
     useEffect(() => {
-        console.log("Search message inside useEffect: ", searchTerm);
+        // console.log("Search message inside useEffect: ", searchTerm);
     }, [searchTerm]);
 
     return (

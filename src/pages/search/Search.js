@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Navbar from '../../components/Navbar/navbar.component'
 import SearchComponent from '../../components/Search/search.component';
 import { SearchContext } from '../../context/search.context';
 import axios from '../../axios';
@@ -13,11 +12,11 @@ const Search = () => {
     const API_KEY = 'cd53523310f1c138c91a1e2e2b1101f3';
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
     const { searchQuery, setSearchQuery } = useContext(SearchContext);
-    console.log("search -> ", searchQuery);
+    // console.log("search -> ", searchQuery);
 
     const [searchItems, setSearchItems] = useState([]);
 
-    console.log("searchQuery - ", searchQuery);
+    // console.log("searchQuery - ", searchQuery);
 
     const [backdrop, setBackdrop] = useState(false);
     const [play, setplay] = useState(false);
@@ -45,11 +44,11 @@ const Search = () => {
     useEffect(() => {
         async function changeQuery() {
             let value = searchQuery.split(" ").join("%20");
-            console.log("value ", searchQuery);
+            // console.log("value ", searchQuery);
             const url = `/search/multi?api_key=${API_KEY}&language=en-US&query=${value}&page=1&include_adult=false`;
             const request = await axios.get(url);
             setSearchItems(request.data.results);
-            console.log('Search items -> ', request.data.results);
+            // console.log('Search items -> ', request.data.results);
             return request;
         }
 
@@ -80,7 +79,7 @@ const Search = () => {
                 <h1 className="search-page__title">Search Results</h1>
                 <div className="search-page__outer">
                     {
-                        searchItems?.length == 0 ?
+                        searchItems?.length === 0 ?
                             <div style={{ color: "white", marginLeft: "0%", lineHeight: "3" }}>
                                 <h2>No Search Result available</h2>
                                 <ul>

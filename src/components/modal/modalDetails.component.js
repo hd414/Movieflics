@@ -26,14 +26,14 @@ const ModalDetails = ({ movie, playNow }) => {
 
         try {
             const TvVid = await axios.get(`https://api.themoviedb.org/3/tv/${movie.id}/videos?api_key=9d2bff12ed955c7f1f74b83187f188ae`)
-            console.table('TvVid->', TvVid.data.results[TvVid.data.results.length - 1].key);
+            // console.table('TvVid->', TvVid.data.results[TvVid.data.results.length - 1].key);
             setTrailerUrl(TvVid.data.results[0].key);
         }
         catch {
 
             try {
                 const movieVid = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=9d2bff12ed955c7f1f74b83187f188ae`);
-                console.table('movieVid -> ', movieVid.data.results[0].key);
+                // console.table('movieVid -> ', movieVid.data.results[0].key);
                 setTrailerUrl(movieVid.data.results[0].key);
 
             }
