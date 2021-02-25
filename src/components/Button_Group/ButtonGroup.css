@@ -65,3 +65,8 @@
     stroke-width: 2;
   }
   
+
+  .btn-left{
+    position: absolute;
+    left: -3%;
+  }

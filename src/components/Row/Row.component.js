@@ -126,13 +126,13 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
 
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    // const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-    const checkNext = () => {
-        const labels = document.querySelectorAll('#slider label');
-        const nextIndex = selectedIndex === (labels.length - 1) ? 0 : selectedIndex + 1;
-        setSelectedIndex(nextIndex);
-    }
+    // const checkNext = () => {
+    //     const labels = document.querySelectorAll('#slider label');
+    //     const nextIndex = selectedIndex === (labels.length - 1) ? 0 : selectedIndex + 1;
+    //     setSelectedIndex(nextIndex);
+    // }
 
 
 
