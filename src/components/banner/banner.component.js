@@ -12,7 +12,7 @@ const Banner = ({ BackdropHandler }) => {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(requests.fetchActionMovies);
+            const request = await axios.get(requests.fetchComedyMovies);
             setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
             return request;
         }
@@ -38,11 +38,11 @@ const Banner = ({ BackdropHandler }) => {
             <header className="banner"
 
                 style={{
-
+                    background: `linear-gradient(to right, #2C5364, #203A43, #0F2027)`,
                     backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
                     backgroundPosition: "center center",
                     padding: "10px",
-                    backgroundSize: "cover",
+                    backgroundSize: "100% 105%",
                     resize: "both",
                     backgroundRepeat: "no-repeat",
 

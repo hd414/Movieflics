@@ -21,6 +21,7 @@ const ModalDetails = ({ movie, playNow }) => {
 
 
     const [trailerUrl, setTrailerUrl] = useState('');
+    const [error, setError] = useState('');
 
     const PlayTrailer = async () => {
 
@@ -28,6 +29,7 @@ const ModalDetails = ({ movie, playNow }) => {
             const TvVid = await axios.get(`https://api.themoviedb.org/3/tv/${movie.id}/videos?api_key=9d2bff12ed955c7f1f74b83187f188ae`)
             // console.table('TvVid->', TvVid.data.results[TvVid.data.results.length - 1].key);
             setTrailerUrl(TvVid.data.results[0].key);
+            setError('');
         }
         catch {
 
@@ -35,10 +37,12 @@ const ModalDetails = ({ movie, playNow }) => {
                 const movieVid = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=9d2bff12ed955c7f1f74b83187f188ae`);
                 // console.table('movieVid -> ', movieVid.data.results[0].key);
                 setTrailerUrl(movieVid.data.results[0].key);
+                setError('');
 
             }
             catch {
                 console.log("ERROR");
+                setError("error");
             }
 
         }
@@ -51,6 +55,7 @@ const ModalDetails = ({ movie, playNow }) => {
     }
 
     if (trailerUrl) {
+        console.log(trailerUrl);
         return (
             <div style={{ height: "100%" }}>
                 <YouTube videoId={trailerUrl} opts={opts} />
@@ -78,6 +83,16 @@ const ModalDetails = ({ movie, playNow }) => {
                         <i className="plus icon"></i> My list
                     </button>
                 </div>
+                {
+                    error ?
+                        <div style={{ color: "#D8000C", marginTop: "10px", padding: "0.5rem", backgroundColor: "#FFD2D2", width: "30vw" }} >
+                            <h2 style={{ fontSize: "1rem", marginBottom: "0px" }}>Something went wrong ...</h2>
+                            <h2 style={{ fontSize: "1rem", marginTop: "5px" }}>Please try again or enjoy another movie or series</h2>
+                        </div>
+                        :
+                        null
+                }
+
             </div >
         )
     }

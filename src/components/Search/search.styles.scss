@@ -13,6 +13,7 @@
   min-width: 90%;
   min-height: 300px;
   border-radius: 15px;
+  transition: 0.6s ease-in-out;
 
 }
 
@@ -191,16 +192,33 @@
   .search-item-play,
   .search-item-actions {
     padding: 1w;
+    width: 30%;
+    object-fit: contain;
   }
+  .search-item-title{
+    font-size:x-large;
+    letter-spacing: normal;
+    width:80vw;
+  }
+
+  .search-img{
+    margin: 1rem;
+  }
+
+  .search-item-play-button{
+    width: 2rem;
+    object-fit: contain;
+    visibility: hidden;
+  }
+  
 }
 
 
 
 
 .search-img:hover {
-   background-color: yellow;
+   background-color: rgb(22, 22, 2);
   transform: translateY(-6%);
-  transition: all .5s ease-in-out;
 }
 
 .search-img {

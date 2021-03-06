@@ -13,6 +13,8 @@ h1{
     overflow-y: hidden;
     overflow-x:scroll;
     padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     
 }
 

@@ -12,6 +12,7 @@ const responsive = {
     superLargeDesktop: {
         breakpoint: { max: 4000, min: 3000 },
         items: 8,
+        slidesToSlide: 3,
     },
     desktop: {
         breakpoint: { max: 3000, min: 1060 },
@@ -21,7 +22,7 @@ const responsive = {
     tablet: {
         breakpoint: { max: 1060, min: 800 },
         items: 4,
-        slidesToSlide: 2,
+        slidesToSlide: 1,
     },
     smallerDevice: {
         breakpoint: { max: 800, min: 500 },
@@ -139,7 +140,7 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
     return (
 
         <div className="row" >
-            <h1>{title}</h1>
+            <h1 style={{ marginTop: '2rem', marginBottom: "0px" }}>{title}</h1>
 
             <Carousel
                 swipeable
@@ -152,8 +153,8 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
                 autoPlay={false}
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
-                customTransition="all .5 ease-in-out"
-                transitionDuration={500}
+                customTransition="all .8s ease-in-out"
+                transitionDuration={1000}
                 containerClass="carousel-container row-posters hover-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 deviceType={''}
