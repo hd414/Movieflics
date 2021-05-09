@@ -11,12 +11,17 @@
  }
  
  .show {
+<<<<<<< HEAD
      /* transition: all .5s ease-out; */
      animation: fadeIn 0.7s ease-in-out ;
+=======
+     transition: .5s .3s ease-out;
+>>>>>>> 31c10c321a188fa510c222cb9917a6073e811520
      top: 25%;
      left: 0;
      visibility: visible;
      opacity: 1;
+<<<<<<< HEAD
   }
 
   @keyframes fadeIn{
@@ -32,6 +37,9 @@
         visibility: visible;
         opacity: 1;
       }
+=======
+   
+>>>>>>> 31c10c321a188fa510c222cb9917a6073e811520
   }
   
   .hide {
