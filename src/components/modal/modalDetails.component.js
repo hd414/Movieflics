@@ -4,12 +4,8 @@ import YouTube from 'react-youtube';
 import axios from '../../axios';
 
 
-<<<<<<< HEAD
 
 const ModalDetails = ({ movie, playNow, addToList }) => {
-=======
-const ModalDetails = ({ movie, playNow }) => {
->>>>>>> 31c10c321a188fa510c222cb9917a6073e811520
     const opts = {
 
         height: '500vh',
@@ -84,13 +80,8 @@ const ModalDetails = ({ movie, playNow }) => {
                     <button className="btn1" onClick={PlayTrailer}>
                         <i className="play icon"></i> Play
                     </button>
-<<<<<<< HEAD
                     <button className="btn2" onClick={() => addToList(movie)}>
                         <i className="plus icon" ></i> My list
-=======
-                    <button className="btn2">
-                        <i className="plus icon"></i> My list
->>>>>>> 31c10c321a188fa510c222cb9917a6073e811520
                     </button>
                 </div>
                 {
