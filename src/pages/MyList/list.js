@@ -11,7 +11,7 @@ import { FirebaseContext } from '../../context/firebase';
 
 
 const List = () => {
-    console.log("heelllo");
+    // console.log("heelllo");
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
 
@@ -21,6 +21,7 @@ const List = () => {
     // console.log("search -> ", searchQuery);
 
     const [listItems, setListItems] = useState([]);
+    // const [addStatus, setAddStatus] = useState(true);
 
     // console.log("searchQuery - ", searchQuery);
 
@@ -69,6 +70,33 @@ const List = () => {
 
     }, [])
 
+
+
+
+    const onRemoveFromList = async (movie) => {
+        const db = firebase.firestore();
+        try {
+
+
+            const res = await db.collection('movies').doc(user.uid).update({
+                id: firebase.firestore.FieldValue.arrayRemove(movie)
+            });
+
+            let data = [];
+            data = listItems;
+            data = data.filter(film => film.id !== movie.id);
+            setListItems(data);
+            console.log("data", data);
+            console.log(res);
+            console.log("remove item");
+            onCloseHandler()
+        }
+        catch (e) {
+            console.log(e.message)
+        }
+
+    }
+
     return (
         <div>
             {
@@ -80,7 +108,7 @@ const List = () => {
                         close={onCloseHandler}
                         movie={movie}
                     >
-                        <ModalDetails movie={movie} playNow={play} />
+                        <ModalDetails movie={movie} playNow={play} addToList={onRemoveFromList} added={true} />
                     </Modal>
                 )
             }

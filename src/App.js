@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import RowContainer from './containers/Row.container';
 import { IsProtectedPage, IsUserRedirect } from './helpers/routes';
@@ -15,8 +15,8 @@ import List from './pages/MyList/list';
 
 
 
-function App() {
 
+function App() {
   const location = useLocation();
   // console.log(location.pathname);
   const user = UseAuthListener();
@@ -24,12 +24,15 @@ function App() {
   const [showProfile, setShowProfile] = useState(true);
   const [loading, setLoading] = useState(true);
 
+
+
   // console.log("showProfile", showProfile);
   // console.log("loading", loading);
 
   if (location.pathname === '/browse' || location.pathname === '/ResultPage' || location.pathname === '/ListPage') {
     return (
       <SearchContext.Provider value={{ searchQuery, setSearchQuery, loading, setLoading }}>
+
         <Navbar />
         <Switch>
           <Route
@@ -56,6 +59,7 @@ function App() {
             render={() => (<IsProtectedPage user={user} Path={'/'} exact><List /></IsProtectedPage>)}
           />
         </Switch>
+
       </SearchContext.Provider>
     )
   }

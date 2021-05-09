@@ -5,7 +5,8 @@ import axios from '../../axios';
 
 
 
-const ModalDetails = ({ movie, playNow, addToList }) => {
+const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
+    // console.log("added", added)
     const opts = {
 
         height: '500vh',
@@ -20,6 +21,17 @@ const ModalDetails = ({ movie, playNow, addToList }) => {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
 
+    let status = false;
+
+    function changeStatus() {
+        if (setAdded) {
+            let temp = added;
+            console.log("temp", temp);
+            setAdded(!temp);
+            console.log("temp", temp);
+        }
+
+    }
 
     const [trailerUrl, setTrailerUrl] = useState('');
     const [error, setError] = useState('');
@@ -80,8 +92,8 @@ const ModalDetails = ({ movie, playNow, addToList }) => {
                     <button className="btn1" onClick={PlayTrailer}>
                         <i className="play icon"></i> Play
                     </button>
-                    <button className="btn2" onClick={() => addToList(movie)}>
-                        <i className="plus icon" ></i> My list
+                    <button className="btn2" onClick={() => { changeStatus(); addToList(movie); }}>
+                        <i className={added ? "check icon" : "plus icon"} ></i> My list
                     </button>
                 </div>
                 {

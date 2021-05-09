@@ -23,7 +23,8 @@ const RowContainer = () => {
     const [backdrop, setBackdrop] = useState(false);
     const [play, setplay] = useState(false);
     const [movie, setMovie] = useState('');
-
+    const [listItems, setListItems] = useState([]);
+    const [addStatus, setAddStatus] = useState(false);
 
     useEffect(() => {
         if (!showProfile) {
@@ -35,7 +36,50 @@ const RowContainer = () => {
     }, [showProfile]);
 
 
-    function BackdropHandler(movie) {
+
+    useEffect(() => {
+        async function getListData() {
+            const db = firebase.firestore();
+            try {
+                const res = await db.collection('movies').doc(user.uid).get();
+                let datas = res.data().id;
+                let data = [];
+                for (const item in datas) {
+                    data.push(datas[item]);
+                }
+
+                setListItems(data);
+            }
+            catch (e) {
+                console.log(e.message)
+            }
+        }
+        getListData();
+        // console.log(listItems);
+    }, [user]);
+
+
+
+    // console.log(listItems)
+
+    async function checkForStatus(movie) {
+        let i = 0;
+        for (i = 0; i < listItems.length; i++) {
+            if (movie.id === listItems[i].id) {
+                console.log("this is already added to list firend");
+                setAddStatus(true);
+                console.log("addstatus", addStatus);
+                break;
+            }
+            else {
+                setAddStatus(false);
+            }
+        }
+    }
+
+    async function BackdropHandler(movie) {
+        await checkForStatus(movie);
+
         setMovie(movie);
         // console.log("backdrop clicked");
         // console.log(backdrop, movie);
@@ -55,10 +99,36 @@ const RowContainer = () => {
     const onAddToList = async (movie) => {
         const db = firebase.firestore();
         try {
-            const res = await db.collection('movies').doc(user.uid).update({
-                id: firebase.firestore.FieldValue.arrayUnion(movie)
-            });
-            console.log(res);
+
+            if (addStatus) {
+                const res = await db.collection('movies').doc(user.uid).update({
+                    id: firebase.firestore.FieldValue.arrayRemove(movie)
+                });
+
+
+                let data = [];
+                data = listItems;
+                data = data.filter(film => film.id !== movie.id);
+                setListItems(data);
+
+                console.log(res);
+                console.log("remove item");
+            }
+            else {
+                const res = await db.collection('movies').doc(user.uid).update({
+                    id: firebase.firestore.FieldValue.arrayUnion(movie)
+                });
+
+                let data = [];
+                data = listItems;
+                data = data.filter(film => film.id !== movie.id);
+                data.push(movie);
+                setListItems(data);
+                console.log(res);
+                console.log("add item")
+            }
+
+
         }
         catch (e) {
             console.log(e.message)
@@ -94,8 +164,9 @@ const RowContainer = () => {
                                     show={backdrop}
                                     close={onCloseHandler}
                                     movie={movie}
+
                                 >
-                                    <ModalDetails movie={movie} playNow={play} addToList={onAddToList} />
+                                    <ModalDetails movie={movie} playNow={play} addToList={onAddToList} added={addStatus} setAdded={setAddStatus} />
                                 </Modal>
                             )
                         }

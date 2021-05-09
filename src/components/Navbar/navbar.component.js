@@ -79,6 +79,8 @@ const Navbar = ({ }) => {
 
 
 
+
+
     return (
         <div id="navbar" className={`nav ${show && 'nav_black'}`}>
             <RouteLink to="/browse" onClick={() => setSearchTerm('')}>
@@ -88,25 +90,66 @@ const Navbar = ({ }) => {
                     alt="netflix logo"
                 />
             </RouteLink>
-            <Navbar.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <Profile>
+            <div style={{
+                display: 'flex',
+                width: "88%"
+            }}>
+                <div style={{ display: "block" }}>
+                    <RouteLink style={{
+                        padding: "10px 12px",
+                        textTransform: "capitalize",
+                        fontSize: "1.2rem",
+                        fontWeight: "550",
+                        backgroundColor: "transparent",
+                        cursor: "pointer",
+                        color: "#e5e5e5",
+                        textDecoration: "none",
+                        lineHeight: "1.2",
+                        textShadow: "0 7px 10px rgba(0,0,0,0.6)",
 
-                <img
-                    className="nav_avtaar"
-                    src={`/images/users/${user.photoURL}.png`}
-                    alt="avtaar"
-                />
-                <Dropdown>
-                    <Group>
-                        <Picture src={`/images/users/${user.photoURL}.png`} />
-                        <Link>{user.displayName}</Link>
-                    </Group>
-                    <Group>
-                        <Link onClick={() => firebase.auth().signOut()}>Sign out</Link>
-                    </Group>
-                </Dropdown>
-            </Profile>
+                        // -webkit-font-smoothing: antialiased;
+                    }}
+                        to="/browse" onClick={() => setSearchTerm('')}>
+                        movies
+            </RouteLink>
+                    <RouteLink style={{
+                        padding: "10px 12px",
+                        textTransform: "capitalize",
+                        fontSize: "1.2rem",
+                        fontWeight: "550",
+                        backgroundColor: "transparent",
+                        cursor: "pointer",
+                        color: "#e5e5e5",
+                        textDecoration: "none",
+                        lineHeight: "1.2",
+                        textShadow: "0 7px 10px rgba(0,0,0,0.6)",
 
+                        // -webkit-font-smoothing: antialiased;
+                    }}
+                        to="/ListPage" onClick={() => setSearchTerm('')}>
+                        MyList
+            </RouteLink>
+                </div>
+
+                <Navbar.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <Profile>
+
+                    <img
+                        className="nav_avtaar"
+                        src={`/images/users/${user.photoURL}.png`}
+                        alt="avtaar"
+                    />
+                    <Dropdown>
+                        <Group>
+                            <Picture src={`/images/users/${user.photoURL}.png`} />
+                            <Link>{user.displayName}</Link>
+                        </Group>
+                        <Group>
+                            <Link onClick={() => firebase.auth().signOut()}>Sign out</Link>
+                        </Group>
+                    </Dropdown>
+                </Profile>
+            </div>
         </div>
     )
 }
