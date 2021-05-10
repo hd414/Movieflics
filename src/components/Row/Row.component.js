@@ -5,6 +5,10 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ButtonGroup from '../Button_Group/ButtonGroup';
 import CarouselItem from '../Carousel/Carousel.item';
+import aos from 'aos';
+import 'aos/dist/aos.css';
+
+
 
 
 
@@ -67,12 +71,14 @@ const Row = ({ title, fetchUrl, Movies, isLargeRow, BackdropHandler, playHandler
     }
 
 
-
+    useEffect(() => {
+        aos.init({ duration: 1000, easing: 'ease-in-sine' })
+    }, [])
 
 
     return (
 
-        <div className="row" >
+        <div data-aos="fade-up" className="row" >
             <h1 style={{ marginTop: '2rem', marginBottom: "0px" }}>{title}</h1>
 
             <Carousel
