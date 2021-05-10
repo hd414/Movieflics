@@ -6,13 +6,11 @@ import axios from '../../axios';
 
 
 const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
-    // console.log("added", added)
     const opts = {
 
         height: '500vh',
         width: '100%',
         playerVars: {
-            // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
         },
     }
@@ -21,7 +19,6 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
 
-    let status = false;
 
     function changeStatus() {
         if (setAdded) {
@@ -40,7 +37,6 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
 
         try {
             const TvVid = await axios.get(`https://api.themoviedb.org/3/tv/${movie.id}/videos?api_key=9d2bff12ed955c7f1f74b83187f188ae`)
-            // console.table('TvVid->', TvVid.data.results[TvVid.data.results.length - 1].key);
             setTrailerUrl(TvVid.data.results[0].key);
             setError('');
         }
@@ -48,7 +44,6 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
 
             try {
                 const movieVid = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=9d2bff12ed955c7f1f74b83187f188ae`);
-                // console.table('movieVid -> ', movieVid.data.results[0].key);
                 setTrailerUrl(movieVid.data.results[0].key);
                 setError('');
 
@@ -62,7 +57,7 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
 
 
     }
-    if (playNow == true) {
+    if (playNow === true) {
         PlayTrailer();
         playNow = false;
     }

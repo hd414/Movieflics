@@ -3,7 +3,7 @@ import './Carousel.item.css';
 
 import { ReactComponent as PlayRing } from '../../assets/playWithRing.svg';
 import { ReactComponent as ChevronDown } from '../../assets/chevronDown.svg';
-const CarouselItem = ({ key, movie, image, handleItemExpand, title, HandlePlay }) => {
+const CarouselItem = ({ movie, image, handleItemExpand, HandlePlay }) => {
 
 
 
@@ -18,7 +18,7 @@ const CarouselItem = ({ key, movie, image, handleItemExpand, title, HandlePlay }
 
     return (
         <div
-            key={key}
+            key={movie.id}
             className="carousel-img "
             style={itemStyle}
         >

@@ -5,6 +5,7 @@ import { FooterContainer } from '../containers/footer'
 import HeaderContainer from '../containers/header'
 import { FirebaseContext } from '../context/firebase';
 import { ProfileContext } from '../context/profile.context';
+import './loader.styles.css';
 
 const Signin = () => {
     const history = useHistory();
@@ -13,9 +14,12 @@ const Signin = () => {
     const [email, setEmail] = useState('h@gmail.com');
     const [password, setPassword] = useState('123456');
     const [error, setError] = useState('');
+    const [loader, setLoader] = useState(false);
 
     const isInvalid = password == '' || email == '';
     const handleSignin = (event) => {
+
+        setLoader(true);
         event.preventDefault();
 
 
@@ -23,12 +27,14 @@ const Signin = () => {
             .then(() => {
                 setShowProfile(true);
                 setLoading(true);
+                setLoader(false);
                 history.push('/browse');
             })
             .catch((error) => {
                 setEmail('');
                 setPassword('');
                 setError(error.message);
+                setLoader(false);
             });
 
     };
@@ -53,7 +59,10 @@ const Signin = () => {
                             onChange={({ target }) => setPassword(target.value)}
                             autoComplete="off"
                         />
-                        <Form.Submit disabled={isInvalid} type="submit">Sign In</Form.Submit>
+                        <Form.Submit style={{ position: "relative" }} className={loader ? "loading" : ""} disabled={isInvalid} type="submit">Sign In
+                        {(loader) ? <div id="loading"></div> : null}
+                        </Form.Submit>
+
 
                     </Form.Base>
 

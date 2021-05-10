@@ -4,6 +4,7 @@ import Form from '../components/form/form.component';
 import { FooterContainer } from '../containers/footer'
 import HeaderContainer from '../containers/header'
 import { FirebaseContext } from '../context/firebase';
+import './loader.styles.css';
 
 const Signup = () => {
 
@@ -14,9 +15,11 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [firstname, setFirstName] = useState('');
     const [error, setError] = useState('');
+    const [loader, setLoader] = useState(false);
 
     const isInvalid = firstname == '' || email == '' || password == '';
     const handleSignup = (event) => {
+        setLoader(true);
         event.preventDefault();
 
 
@@ -30,7 +33,7 @@ const Signup = () => {
                     .then(() => {
                         history.push('/signin')
                     })
-
+                setLoader(false);
 
             })
             .catch((error) => {
@@ -38,6 +41,7 @@ const Signup = () => {
                 setPassword('');
                 setFirstName('');
                 setError(error.message);
+                setLoader(false);
             });
 
     }
@@ -70,7 +74,8 @@ const Signup = () => {
                             onChange={({ target }) => setPassword(target.value)}
                             autoComplete="off"
                         />
-                        <Form.Submit disabled={isInvalid} type="submit">Sign up</Form.Submit>
+                        <Form.Submit style={{ position: "relative" }} className={loader ? "loading" : ""} disabled={isInvalid} type="submit">Sign up
+                        {(loader) ? <div id="loading"></div> : null}</Form.Submit>
 
                     </Form.Base>
 

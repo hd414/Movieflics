@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../logo.svg';
 import { FirebaseContext } from '../../context/firebase';
 import './navbar.styles.css';
@@ -16,14 +16,12 @@ const Navbar = ({ }) => {
 
     const location = useLocation();
 
-
-    // const searchContext = createContext(null);
     const history = useHistory();
 
     const { firebase } = useContext(FirebaseContext);
 
     const user = firebase.auth().currentUser || {};
-    // console.log("user--->", user);
+
 
     const [profile, setProfile] = useState({});
     const [loading, setloading] = useState(true);
@@ -32,10 +30,10 @@ const Navbar = ({ }) => {
 
 
 
-    if (searchTerm?.length > 0 && location.pathname != '/ResultPage') {
+    if (searchTerm?.length > 0 && location.pathname !== '/ResultPage') {
         history.push('/ResultPage');
     }
-    else if (searchTerm?.length === 0 && location.pathname == '/ResultPage') {
+    else if (searchTerm?.length === 0 && location.pathname === '/ResultPage') {
         history.push('/browse');
     }
 
@@ -45,7 +43,6 @@ const Navbar = ({ }) => {
     }
 
     useEffect(() => {
-        // console.log("user", profile)
         setTimeout(() => {
             setloading(false);
         }, 3000)
@@ -56,9 +53,6 @@ const Navbar = ({ }) => {
     useEffect(() => {
         setSearchQuery(searchTerm);
     }, [searchTerm]);
-
-
-
 
 
     useEffect(() => {

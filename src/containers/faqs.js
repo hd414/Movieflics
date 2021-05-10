@@ -25,6 +25,7 @@ const FaqsContainer = () => {
                 <OptForm.Input placeholder="Email address" />
                 <Link to="/Signin"><OptForm.Button>Try it now</OptForm.Button></Link>
                 <OptForm.Break />
+                <br />
                 <OptForm.Text>Ready to watch? Enter your email to create or restart your membership.</OptForm.Text>
             </OptForm>
         </Accordion >

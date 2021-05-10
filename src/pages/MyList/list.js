@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import SearchComponent from '../../components/Search/search.component';
-import { SearchContext } from '../../context/search.context';
-import axios from '../../axios';
 import './list.scss'
 import Modal from '../../components/modal/modal.component';
 import ModalDetails from '../../components/modal/modalDetails.component';
@@ -11,19 +9,14 @@ import { FirebaseContext } from '../../context/firebase';
 
 
 const List = () => {
-    // console.log("heelllo");
+
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
-
-    const API_KEY = 'cd53523310f1c138c91a1e2e2b1101f3';
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
-    // const { searchQuery, setSearchQuery } = useContext(SearchContext);
-    // console.log("search -> ", searchQuery);
+
 
     const [listItems, setListItems] = useState([]);
-    // const [addStatus, setAddStatus] = useState(true);
 
-    // console.log("searchQuery - ", searchQuery);
 
     const [backdrop, setBackdrop] = useState(false);
     const [play, setplay] = useState(false);
@@ -32,8 +25,7 @@ const List = () => {
 
     function BackdropHandler(movie) {
         setMovie(movie);
-        // console.log("backdrop clicked");
-        // console.log(backdrop, movie);
+
         setBackdrop(true);
     }
 
@@ -68,7 +60,7 @@ const List = () => {
 
         getList();
 
-    }, [])
+    }, [user])
 
 
 
@@ -86,9 +78,9 @@ const List = () => {
             data = listItems;
             data = data.filter(film => film.id !== movie.id);
             setListItems(data);
-            console.log("data", data);
-            console.log(res);
-            console.log("remove item");
+            // console.log("data", data);
+            // console.log(res);
+            // console.log("remove item");
             onCloseHandler()
         }
         catch (e) {
@@ -123,11 +115,6 @@ const List = () => {
                         listItems?.length === 0 ?
                             <div style={{ color: "white", marginLeft: "0%", lineHeight: "3" }}>
                                 <h2>Currently No Item in the List</h2>
-                                {/* <ul>
-                                    <li><h4>Try different keyword</h4></li>
-                                    <li><h4>keyword may have some spelling error</h4></li>
-                                    <li><h4>Internet may be slow</h4></li>
-                                </ul> */}
                             </div>
                             :
                             (

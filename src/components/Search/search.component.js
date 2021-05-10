@@ -3,7 +3,7 @@ import './search.styles.scss';
 
 import { ReactComponent as PlayRing } from '../../assets/playWithRing.svg';
 import { ReactComponent as ChevronDown } from '../../assets/chevronDown.svg';
-const SearchComponent = ({ key, item, image, handleItemExpand, title, HandlePlay }) => {
+const SearchComponent = ({ item, image, handleItemExpand, title, HandlePlay }) => {
 
 
 
@@ -20,7 +20,7 @@ const SearchComponent = ({ key, item, image, handleItemExpand, title, HandlePlay
     return (
 
         <div
-            key={key}
+            key={item.id}
             className="search-img"
             style={itemStyle}
             onClick={() => handleItemExpand(item)}

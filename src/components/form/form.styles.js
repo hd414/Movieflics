@@ -85,4 +85,14 @@ export const Submit = styled.button`
   &:disabled {
     opacity: 0.5;
   }
+  &:active{
+    opacity:0.5;
+  }  
 `;
+
+
+
+
+
+
+

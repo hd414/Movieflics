@@ -2,7 +2,7 @@ import axios from '../../axios';
 import React, { useEffect, useState } from 'react';
 import requests from '../../request';
 import './banner.styles.css';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Banner = ({ BackdropHandler }) => {
 
@@ -28,7 +28,7 @@ const Banner = ({ BackdropHandler }) => {
 
     }
 
-    // console.log("banner", movie);
+
 
     function truncate(str, n) {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -39,17 +39,12 @@ const Banner = ({ BackdropHandler }) => {
             <header className="banner"
 
                 style={{
-                    // background: `linear-gradient(to right, #2C5364, #203A43, #0F2027)`,
+
                     backgroundImage: ` linear-gradient(
                         to bottom,
                         rgba(0, 0, 0, 0),
                         rgba(0, 0, 0, 0.4)
                       ),url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-                    // backgroundPosition: "center center",
-                    // padding: "10px",
-                    // backgroundSize: "100% 105%",
-                    // resize: "both",
-                    // backgroundRepeat: "no-repeat",
                     padding: "60px",
                     resize: "both",
                     backgroundSize: "cover",
