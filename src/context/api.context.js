@@ -9,7 +9,7 @@ const Context = (props) => {
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
     useEffect(() => {
         async function fetchData(fetchUrl) {
-            console.log("context api is called")
+            // console.log("context api is called")
             const request = await axios.get(fetchUrl);
             let data = [];
             // console.log('movies', request.data.results);

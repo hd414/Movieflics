@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import SearchComponent from '../../components/Search/search.component';
 import { SearchContext } from '../../context/search.context';
-import axios from '../../axios';
+// import axios from '../../axios';
+import axios from 'axios';
 import './search.scss'
 import Modal from '../../components/modal/modal.component';
 import ModalDetails from '../../components/modal/modalDetails.component';
 import { FirebaseContext } from '../../context/firebase';
+
 
 const Search = () => {
 
@@ -133,13 +135,21 @@ const Search = () => {
     }
 
     useEffect(() => {
+        let cancelToken;
         async function changeQuery() {
+
             let value = searchQuery.split(" ").join("%20");
 
-            const url = `/search/multi?api_key=${API_KEY}&language=en-US&query=${value}&page=1&include_adult=false`;
-            const request = await axios.get(url);
-            setSearchItems(request.data.results);
+            if (typeof cancelToken != typeof undefined) {
+                cancelToken.cancel("Canceling the prev req");
+            }
 
+            cancelToken = axios.CancelToken.source();
+
+            const url = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${value}&page=1&include_adult=false`;
+            const request = await axios.get(url, { cancelToken: cancelToken.token });
+            setSearchItems(request.data.results);
+            // console.table('searchResult', request);
             return request;
         }
 
