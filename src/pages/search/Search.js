@@ -12,14 +12,13 @@ const Search = () => {
     const API_KEY = 'cd53523310f1c138c91a1e2e2b1101f3';
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
     const { searchQuery, setSearchQuery } = useContext(SearchContext);
-    // console.log("search -> ", searchQuery);
 
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
 
     const [searchItems, setSearchItems] = useState([]);
 
-    // console.log("searchQuery - ", searchQuery);
+
 
     const [backdrop, setBackdrop] = useState(false);
     const [play, setplay] = useState(false);
@@ -49,7 +48,7 @@ const Search = () => {
             }
         }
         getListData();
-        // console.log(listItems);
+
     }, [user]);
 
 
@@ -57,9 +56,9 @@ const Search = () => {
         let i = 0;
         for (i = 0; i < listItems.length; i++) {
             if (movie.id === listItems[i].id) {
-                console.log("this is already added to list firend");
+
                 setAddStatus(true);
-                console.log("addstatus", addStatus);
+
                 break;
             }
             else {
@@ -73,8 +72,7 @@ const Search = () => {
 
         await checkForStatus(movie);
         setMovie(movie);
-        // console.log("backdrop clicked");
-        // console.log(backdrop, movie);
+
         setBackdrop(true);
     }
 
@@ -104,8 +102,7 @@ const Search = () => {
                 data = data.filter(film => film.id !== movie.id);
                 setListItems(data);
 
-                console.log(res);
-                console.log("remove item");
+
             }
             else {
                 const res = await db.collection('movies').doc(user.uid).update({
@@ -117,8 +114,8 @@ const Search = () => {
                 data = data.filter(film => film.id !== movie.id);
                 data.push(movie);
                 setListItems(data);
-                console.log(res);
-                console.log("add item")
+
+                // console.log("add item")
             }
 
 
@@ -129,7 +126,7 @@ const Search = () => {
                 const res = await db.collection('movies').doc(user.uid).set({
                     id: firebase.firestore.FieldValue.arrayUnion(movie)
                 });
-                console.log(res);
+
             }
         }
 
@@ -138,11 +135,11 @@ const Search = () => {
     useEffect(() => {
         async function changeQuery() {
             let value = searchQuery.split(" ").join("%20");
-            // console.log("value ", searchQuery);
+
             const url = `/search/multi?api_key=${API_KEY}&language=en-US&query=${value}&page=1&include_adult=false`;
             const request = await axios.get(url);
             setSearchItems(request.data.results);
-            // console.log('Search items -> ', request.data.results);
+
             return request;
         }
 

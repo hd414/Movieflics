@@ -4,9 +4,10 @@ import Loading from '../components/loading/loading.component';
 import Modal from '../components/modal/modal.component';
 import ModalDetails from '../components/modal/modalDetails.component';
 import Row from '../components/Row/Row.component'
+import { ApiContext } from '../context/api.context';
 import { FirebaseContext } from '../context/firebase';
 import { ProfileContext } from '../context/profile.context';
-import requests from '../request';
+// import requests from '../request';
 import ProfileContainer from './profile';
 
 
@@ -25,6 +26,9 @@ const RowContainer = () => {
     const [movie, setMovie] = useState('');
     const [listItems, setListItems] = useState([]);
     const [addStatus, setAddStatus] = useState(false);
+
+    const context = useContext(ApiContext);
+    // console.log("context", context);
 
     useEffect(() => {
         if (!showProfile) {
@@ -174,52 +178,60 @@ const RowContainer = () => {
 
 
                         <Row title={'Trending Now'}
-                            fetchUrl={requests.fetchTrending}
+                            // fetchUrl={requests.fetchTrending}
                             isLargeRow
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[0]}
                         />
                         <Row
                             title={'Anime'}
-                            fetchUrl={requests.fetchAnime}
+                            // fetchUrl={requests.fetchAnime}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[1]}
                         />
                         <Row
                             title={'Top Rated'}
-                            fetchUrl={requests.fetchTopRated}
+                            // fetchUrl={requests.fetchTopRated}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[2]}
                         />
                         <Row
                             title={'Netflix Originals'}
-                            fetchUrl={requests.fetchNetflixOriginals}
+                            // fetchUrl={requests.fetchNetflixOriginals}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[3]}
                         />
                         <Row
                             title={'Comedy Movies'}
-                            fetchUrl={requests.fetchComedyMovies}
+                            // fetchUrl={requests.fetchComedyMovies}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[4]}
                         />
                         <Row
                             title={'Action Movies'}
-                            fetchUrl={requests.fetchActionMovies}
+                            // fetchUrl={requests.fetchActionMovies}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[5]}
                         />
                         <Row
                             title={'Horror Movies'}
-                            fetchUrl={requests.fetchHorrorMovies}
+                            // fetchUrl={requests.fetchHorrorMovies}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[6]}
                         />
                         <Row
                             title={'Romance Movies'}
-                            fetchUrl={requests.fetchRomanceMovies}
+                            // fetchUrl={requests.fetchRomanceMovies}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
+                            Movies={context[7]}
                         />
 
 

@@ -23,9 +23,7 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
     function changeStatus() {
         if (setAdded) {
             let temp = added;
-            console.log("temp", temp);
             setAdded(!temp);
-            console.log("temp", temp);
         }
 
     }
@@ -63,7 +61,7 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
     }
 
     if (trailerUrl) {
-        console.log(trailerUrl);
+        // console.log(trailerUrl);
         return (
             <div style={{ height: "100%" }}>
                 <YouTube videoId={trailerUrl} opts={opts} />

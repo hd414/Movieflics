@@ -37,23 +37,24 @@ const responsive = {
 };
 
 
-const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
+const Row = ({ title, fetchUrl, Movies, isLargeRow, BackdropHandler, playHandler }) => {
 
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
     const [movies, setMovies] = useState([]);
 
 
-    useEffect(() => {
-        console.log("api is called for", fetchUrl);
-        async function fetchData() {
-            const request = await axios.get(fetchUrl);
-            // console.log('movies', request.data.results);
-            setMovies(request.data.results);
-            return request;
-        }
-        fetchData();
+    // useEffect(() => {
 
-    }, [fetchUrl]);
+    //     async function fetchData() {
+    //         const request = await axios.get(fetchUrl);
+    //         // console.log('movies', request.data.results);
+    //         setMovies(request.data.results);
+    //         console.log('movies', movies);
+    //         return request;
+    //     }
+    //     fetchData();
+
+    // }, [fetchUrl]);
 
 
 
@@ -99,7 +100,7 @@ const Row = ({ title, fetchUrl, isLargeRow, BackdropHandler, playHandler }) => {
 
 
                 {
-                    movies.map((movie) => {
+                    Movies.map((movie) => {
                         return (
                             <CarouselItem
                                 key={movie.id}

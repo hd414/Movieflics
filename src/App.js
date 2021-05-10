@@ -12,6 +12,7 @@ import Navbar from './components/Navbar/navbar.component';
 import { SearchContext } from './context/search.context';
 import { ProfileContext } from './context/profile.context';
 import List from './pages/MyList/list';
+import Context from './context/api.context';
 
 
 
@@ -28,34 +29,37 @@ function App() {
   if (location.pathname === '/browse' || location.pathname === '/ResultPage' || location.pathname === '/ListPage') {
     return (
       <SearchContext.Provider value={{ searchQuery, setSearchQuery, loading, setLoading }}>
+        <Context>
+          <Navbar />
 
-        <Navbar />
-        <Switch>
-          <Route
-            exact
-            path="/browse"
-            render={() => (
-              <IsProtectedPage user={user} Path={'/'} exact>
-                <ProfileContext.Provider value={{ showProfile, setShowProfile, loading, setLoading }}>
-                  <RowContainer />
-                </ProfileContext.Provider>
-              </IsProtectedPage>
-            )}
-          />
+          <Switch>
 
-          <Route
-            exact
-            path="/ResultPage"
-            render={() => (<IsProtectedPage user={user} Path={'/'} exact><Search /></IsProtectedPage>)}
-          />
+            <Route
+              exact
+              path="/browse"
+              render={() => (
+                <IsProtectedPage user={user} Path={'/'} exact>
+                  <ProfileContext.Provider value={{ showProfile, setShowProfile, loading, setLoading }}>
+                    <RowContainer />
+                  </ProfileContext.Provider>
+                </IsProtectedPage>
+              )}
+            />
 
-          <Route
-            exact
-            path="/ListPage"
-            render={() => (<IsProtectedPage user={user} Path={'/'} exact><List /></IsProtectedPage>)}
-          />
-        </Switch>
 
+            <Route
+              exact
+              path="/ResultPage"
+              render={() => (<IsProtectedPage user={user} Path={'/'} exact><Search /></IsProtectedPage>)}
+            />
+
+            <Route
+              exact
+              path="/ListPage"
+              render={() => (<IsProtectedPage user={user} Path={'/'} exact><List /></IsProtectedPage>)}
+            />
+          </Switch>
+        </Context>
       </SearchContext.Provider>
     )
   }
