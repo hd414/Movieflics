@@ -4,7 +4,7 @@ import requests from '../../request';
 import './banner.styles.css';
 import { Link } from 'react-router-dom';
 
-const Banner = ({ BackdropHandler }) => {
+const Banner = ({ BackdropHandler, Movies }) => {
 
     const [movie, setMovie] = useState([]);
 
@@ -13,9 +13,10 @@ const Banner = ({ BackdropHandler }) => {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(requests.fetchComedyMovies);
-            setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
-            return request;
+            // const request = await axios.get(requests.fetchComedyMovies);
+            setMovie(Movies[Math.floor(Math.random() * Movies.length - 1)]);
+            console.log('banner ', movie);
+            // return request;
         }
         fetchData();
 

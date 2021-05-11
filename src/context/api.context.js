@@ -5,8 +5,23 @@ export const ApiContext = createContext();
 
 
 const Context = (props) => {
-    const [movies, setMovies] = useState([]);
+
+    const [TrendingMovies, setTrendingMovies] = useState([]);
+    const [anime, setAnime] = useState([]);
+    const [topRated, setTopRated] = useState([]);
+    const [netflixOriginal, setNetflixOriginals] = useState([]);
+    const [comedyMovies, setComedyMovies] = useState([]);
+    const [actionMovies, setActionMovies] = useState([]);
+    const [horrorMovies, setHorrorMovies] = useState([]);
+    const [romanticMovies, setRomanticMovies] = useState([]);
+
+    let movies = [];
+
     const baseImgUrl = 'https://image.tmdb.org/t/p/original/';
+
+
+
+
     useEffect(() => {
         async function fetchData(fetchUrl) {
             // console.log("context api is called")
@@ -14,21 +29,138 @@ const Context = (props) => {
             let data = [];
             // console.log('movies', request.data.results);
             data = request.data.results;
-            let newData = movies;
-            newData.push(data);
-            setMovies(newData);
+
+            setTrendingMovies(data);
             return request;
         }
         fetchData(requests.fetchTrending);
-        fetchData(requests.fetchAnime);
-        fetchData(requests.fetchTopRated);
-        fetchData(requests.fetchNetflixOriginals);
-        fetchData(requests.fetchComedyMovies);
-        fetchData(requests.fetchActionMovies);
-        fetchData(requests.fetchHorrorMovies);
-        fetchData(requests.fetchRomanceMovies);
-
     }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setAnime(data);
+            return request;
+        }
+        fetchData(requests.fetchAnime);
+    }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setActionMovies(data);
+            return request;
+        }
+        fetchData(requests.fetchActionMovies);
+    }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setComedyMovies(data);
+            return request;
+        }
+        fetchData(requests.fetchComedyMovies);
+    }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setNetflixOriginals(data);
+            return request;
+        }
+        fetchData(requests.fetchNetflixOriginals);
+    }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setTopRated(data);
+            return request;
+        }
+        fetchData(requests.fetchTopRated);
+    }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setHorrorMovies(data);
+            return request;
+        }
+        fetchData(requests.fetchHorrorMovies);
+    }, [])
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setRomanticMovies(data);
+            return request;
+        }
+        fetchData(requests.fetchRomanceMovies);
+    }, [])
+
+
+
+    // useEffect(() => {
+    //     async function fetchData(fetchUrl) {
+    //         // console.log("context api is called")
+    //         const request = await axios.get(fetchUrl);
+    //         let data = [];
+    //         // console.log('movies', request.data.results);
+    //         data = request.data.results;
+    //         let newData = movies;
+    //         newData.push(data);
+    //         setMovies(newData);
+    //         return request;
+    //     }
+    //     fetchData(requests.fetchTrending);
+    //     fetchData(requests.fetchAnime);
+    //     fetchData(requests.fetchTopRated);
+    //     fetchData(requests.fetchNetflixOriginals);
+    //     fetchData(requests.fetchComedyMovies);
+    //     fetchData(requests.fetchActionMovies);
+    //     fetchData(requests.fetchHorrorMovies);
+    //     fetchData(requests.fetchRomanceMovies);
+
+    // }, [])
+
+
+    movies.push(TrendingMovies, anime, topRated, netflixOriginal, comedyMovies, actionMovies, horrorMovies, romanticMovies);
 
     return (
         <ApiContext.Provider value={movies}>
