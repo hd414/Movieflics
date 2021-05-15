@@ -46,7 +46,7 @@ const Banner = ({ BackdropHandler, Movies }) => {
                         rgba(0, 0, 0, 0),
                         rgba(0, 0, 0, 0.4)
                       ),url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-                    padding: "60px",
+                    padding: "10px",
                     resize: "both",
                     backgroundSize: "cover",
                     backgroundPosition: "top",

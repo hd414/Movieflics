@@ -28,7 +28,7 @@ const Signup = () => {
                 result.user
                     .updateProfile({
                         displayName: firstname,
-                        photoURL: Math.floor(Math.random() * 5) + 1
+                        photoURL: Math.floor(Math.random() * 8) + 1
                     })
                     .then(() => {
                         history.push('/signin')

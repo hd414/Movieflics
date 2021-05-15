@@ -120,6 +120,7 @@ const RowContainer = () => {
                 console.log("remove item");
             }
             else {
+
                 const res = await db.collection('movies').doc(user.uid).update({
                     id: firebase.firestore.FieldValue.arrayUnion(movie)
                 });

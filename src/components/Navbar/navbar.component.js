@@ -88,41 +88,20 @@ const Navbar = ({ }) => {
                 display: 'flex',
                 width: "88%"
             }}>
-                <div style={{ display: "block" }}>
-                    <RouteLink style={{
-                        padding: "10px 12px",
-                        textTransform: "capitalize",
-                        fontSize: "1.2rem",
-                        fontWeight: "550",
-                        backgroundColor: "transparent",
-                        cursor: "pointer",
-                        color: "#e5e5e5",
-                        textDecoration: "none",
-                        lineHeight: "1.2",
-                        textShadow: "0 7px 10px rgba(0,0,0,0.6)",
-
-                        // -webkit-font-smoothing: antialiased;
-                    }}
+                <div style={{ display: "block" }} className={`nav_routes ${show && 'nav_black'}`}>
+                    <RouteLink className="nav_route"
                         to="/browse" onClick={() => setSearchTerm('')}>
-                        movies
+                        Movies
             </RouteLink>
-                    <RouteLink style={{
-                        padding: "10px 12px",
-                        textTransform: "capitalize",
-                        fontSize: "1.2rem",
-                        fontWeight: "550",
-                        backgroundColor: "transparent",
-                        cursor: "pointer",
-                        color: "#e5e5e5",
-                        textDecoration: "none",
-                        lineHeight: "1.2",
-                        textShadow: "0 7px 10px rgba(0,0,0,0.6)",
-
-                        // -webkit-font-smoothing: antialiased;
-                    }}
+                    <RouteLink className="nav_route ${show && 'nav_black'}`"
                         to="/ListPage" onClick={() => setSearchTerm('')}>
-                        MyList
-            </RouteLink>
+                        My List
+                   </RouteLink>
+                    <RouteLink className="nav_route ${show && 'nav_black'}`"
+                        to="/ListPage" onClick={() => setSearchTerm('')}>
+                        Tv Series
+                   </RouteLink>
+
                 </div>
 
                 <Navbar.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -144,6 +123,7 @@ const Navbar = ({ }) => {
                     </Dropdown>
                 </Profile>
             </div>
+
         </div>
     )
 }

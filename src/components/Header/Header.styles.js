@@ -191,13 +191,13 @@ export const Text = styled.p`
 `;
 
 export const Logo = styled.img`
-  height: 36px;
-  width: 134px;
-  margin-right: 40px;
-  @media (min-width: 1449px) {
-    height: 45px;
+  height: 2rem;
+  width: 7rem;
+  margin-right: 2rem;
+  /* @media (min-width: 1449px) {
+    height:2rem;
     width: 167px;
-  }
+  } */
 `;
 
 export const PlayButton = styled.button`

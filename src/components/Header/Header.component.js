@@ -27,8 +27,8 @@ export default function Header({ bg = true, children, ...restProps }) {
             {children}
         </Background>
     ) : (
-            children
-        );
+        children
+    );
 }
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {

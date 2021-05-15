@@ -16,14 +16,14 @@
 .nav_logo{
     position: fixed;
     left: 20px;
-    width: 100px;
+    width: 6rem;
     object-fit: contain;
 }
 
 .nav_avtaar{
     position: fixed;
     right: 20px;
-    width: 30px;
+    width: 2rem;
     object-fit: contain;
 }
 
@@ -31,3 +31,35 @@
     background-color: black;
     opacity: 0.9;
 }
+
+
+.nav_route{
+    padding: 10px 12px;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 550;
+    background-color: transparent;
+    cursor: pointer;
+    color: #e5e5e5;
+    text-decoration: none;
+    line-height: 1.2;
+    text-shadow:0 7px 10px rgba(0,0,0,0.6) ;
+}
+
+@media screen and (max-width:600px) {
+     .nav_logo{
+         width: 4rem;
+     }
+     .nav_routes{
+         position: absolute;
+         display: flex;
+         justify-content: space-around;
+         top: 10vh;
+         left:0rem;
+         padding: 0.4rem;
+         width: 100vw;
+         /* right: 50%; */
+     }
+}
+
+
