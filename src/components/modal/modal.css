@@ -8,6 +8,7 @@
     height: 52rem;
     opacity: 0;
     box-shadow: 0 1.5rem 4rem rgba(23,23,24, .15);
+    line-height: 1.5;
  }
  
  .show {

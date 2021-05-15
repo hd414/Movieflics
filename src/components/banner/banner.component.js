@@ -15,6 +15,11 @@ const Banner = ({ BackdropHandler, Movies }) => {
         async function fetchData() {
             // const request = await axios.get(requests.fetchComedyMovies);
             setMovie(Movies[Math.floor(Math.random() * Movies.length - 1)]);
+
+            if (movie === undefined) {
+
+            }
+            console.log(Math.floor(Math.random() * Movies.length - 1))
             console.log('banner ', movie);
             // return request;
         }

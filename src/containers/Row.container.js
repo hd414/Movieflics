@@ -160,7 +160,7 @@ const RowContainer = () => {
                                 (<Loading src={user.photoURL} />) : <Loading.ReleaseBody />
                         }
 
-                        <Banner BackdropHandler={playHandler} Movies={context[3]} />
+                        <Banner BackdropHandler={playHandler} Movies={context[0]} />
 
                         {
                             backdrop &&

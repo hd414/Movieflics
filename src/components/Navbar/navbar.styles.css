@@ -36,7 +36,7 @@
 .nav_route{
     padding: 10px 12px;
     text-transform: capitalize;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 550;
     background-color: transparent;
     cursor: pointer;
@@ -55,7 +55,7 @@
          display: flex;
          justify-content: space-around;
          top: 10vh;
-         left:0rem;
+         margin:0 auto;
          padding: 0.4rem;
          width: 100vw;
          /* right: 50%; */

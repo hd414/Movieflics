@@ -75,11 +75,11 @@ const ModalDetails = ({ movie, playNow, addToList, added, setAdded }) => {
                     {movie.name || movie.title}
                 </div >
                 <div className="modal-overview">
-                    <div style={{ color: 'green', fontWeight: 'bold', marginRight: 6 }}>Rating {movie.vote_average}/10</div>
+                    <div style={{ color: 'green', fontWeight: 'bold', marginRight: "0.7rem" }}>Rating {movie.vote_average}/10</div>
                     <div>Release Date: {movie.first_air_date || movie.release_date}</div>
                 </div>
                 <div className="modal-body">
-                    {truncate(movie.overview, 400)}
+                    {truncate(movie.overview, 300)}
                 </div>
                 <div className="modal-btn">
                     <button className="btn1" onClick={PlayTrailer}>

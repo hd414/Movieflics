@@ -98,7 +98,7 @@ const Navbar = ({ }) => {
                         My List
                    </RouteLink>
                     <RouteLink className="nav_route ${show && 'nav_black'}`"
-                        to="/ListPage" onClick={() => setSearchTerm('')}>
+                        to="/browse" onClick={() => setSearchTerm('')}>
                         Tv Series
                    </RouteLink>
 

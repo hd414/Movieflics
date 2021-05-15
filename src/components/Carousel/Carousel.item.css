@@ -7,7 +7,8 @@
 
 @media (max-width: 700px) {
   .item-play-button {
-  visibility: hidden;
+  /* visibility: hidden; */
+  width: 4rem;
   opacity: 1;
   
 }
@@ -199,27 +200,8 @@
   .item-actions {
     padding: 1w;
   }
+  #play-with-ring{
+    width: 10vw;
+  }
 }
 
-
-/* .row-poster{
-    width: 100%;
-    object-fit: contain;
-    max-height: 250px;
-    margin-right: 10px;
-    transition: transform 450ms;
-}
-
-.row-poster:hover{
-    transform :scale(1.1);
-}
-
-.row-poster-large{
-    max-height: 250px;
-}
-
-.row-poster-large:hover{
-    transform: scale(1.09);
-    opacity: 1;
-
-} */

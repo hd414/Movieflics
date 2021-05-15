@@ -72,7 +72,7 @@ const Row = ({ title, fetchUrl, Movies, isLargeRow, BackdropHandler, playHandler
 
 
     useEffect(() => {
-        aos.init({ duration: 1000, easing: 'ease-in-sine' })
+        aos.init({ duration: 600, easing: 'ease-in-sine' })
     }, [])
 
 

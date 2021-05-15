@@ -196,9 +196,11 @@
     object-fit: contain;
   }
   .search-item-title{
-    font-size:x-large;
+    font-size: x-large;
     letter-spacing: normal;
-    width:80vw;
+    width: 50vw;
+    line-height: 1.2;
+    padding: 1rem;
   }
 
   .search-img{
