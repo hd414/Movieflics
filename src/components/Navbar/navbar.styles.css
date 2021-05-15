@@ -48,13 +48,13 @@
 
 @media screen and (max-width:600px) {
      .nav_logo{
-         width: 4rem;
+         width: 4.8rem;
      }
      .nav_routes{
          position: absolute;
          display: flex;
          justify-content: space-around;
-         top: 10vh;
+         top: 8vh;
          left:0vh;
          margin:0 auto;
          padding: 0.4rem;
