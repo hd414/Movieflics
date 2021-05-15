@@ -7,7 +7,6 @@ import Row from '../components/Row/Row.component'
 import { ApiContext } from '../context/api.context';
 import { FirebaseContext } from '../context/firebase';
 import { ProfileContext } from '../context/profile.context';
-// import requests from '../request';
 import ProfileContainer from './profile';
 
 
@@ -186,13 +185,13 @@ const RowContainer = () => {
                             playHandler={playHandler}
                             Movies={context[0]}
                         />
-                        <Row
+                        {/* <Row
                             title={'Anime'}
                             // fetchUrl={requests.fetchAnime}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
                             Movies={context[1]}
-                        />
+                        /> */}
                         <Row
                             title={'Top Rated'}
                             // fetchUrl={requests.fetchTopRated}
@@ -200,13 +199,13 @@ const RowContainer = () => {
                             playHandler={playHandler}
                             Movies={context[2]}
                         />
-                        <Row
+                        {/* <Row
                             title={'Netflix Originals'}
                             // fetchUrl={requests.fetchNetflixOriginals}
                             BackdropHandler={BackdropHandler}
                             playHandler={playHandler}
                             Movies={context[3]}
-                        />
+                        /> */}
                         <Row
                             title={'Comedy Movies'}
                             // fetchUrl={requests.fetchComedyMovies}

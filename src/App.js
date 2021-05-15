@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import RowContainer from './containers/Row.container';
+import TvShowContainer from './containers/TvShows.container';
 import { IsProtectedPage, IsUserRedirect } from './helpers/routes';
 import { UseAuthListener } from './hooks/use-auth-listener';
 import { Home } from './pages/home';
@@ -26,7 +27,7 @@ function App() {
 
 
 
-  if (location.pathname === '/browse' || location.pathname === '/ResultPage' || location.pathname === '/ListPage') {
+  if (location.pathname === '/browse' || location.pathname === '/ResultPage' || location.pathname === '/ListPage' || location.pathname === '/tvShows') {
     return (
       <SearchContext.Provider value={{ searchQuery, setSearchQuery, loading, setLoading }}>
         <Context>
@@ -42,6 +43,15 @@ function App() {
                   <ProfileContext.Provider value={{ showProfile, setShowProfile, loading, setLoading }}>
                     <RowContainer />
                   </ProfileContext.Provider>
+                </IsProtectedPage>
+              )}
+            />
+            <Route
+              exact
+              path="/tvShows"
+              render={() => (
+                <IsProtectedPage user={user} Path={'/'} exact>
+                  <TvShowContainer />
                 </IsProtectedPage>
               )}
             />

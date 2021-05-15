@@ -14,6 +14,10 @@ const Context = (props) => {
     const [actionMovies, setActionMovies] = useState([]);
     const [horrorMovies, setHorrorMovies] = useState([]);
     const [romanticMovies, setRomanticMovies] = useState([]);
+    const [popularTv, setPopularTv] = useState([]);
+    const [actionTv, setActionTv] = useState([]);
+    const [animated, setAnimated] = useState([]);
+    const [soap, setSoap] = useState([]);
 
     let movies = [];
 
@@ -134,6 +138,65 @@ const Context = (props) => {
         fetchData(requests.fetchRomanceMovies);
     }, [])
 
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setPopularTv(data);
+            return request;
+        }
+        fetchData(requests.fetchPopularTv);
+    }, [])
+
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setActionTv(data);
+            return request;
+        }
+        fetchData(requests.fetchActionTv);
+    }, [])
+
+
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setAnimated(data);
+            return request;
+        }
+        fetchData(requests.fetchAnimatedTv);
+    }, [])
+
+
+    useEffect(() => {
+        async function fetchData(fetchUrl) {
+            // console.log("context api is called")
+            const request = await axios.get(fetchUrl);
+            let data = [];
+            // console.log('movies', request.data.results);
+            data = request.data.results;
+
+            setSoap(data);
+            return request;
+        }
+        fetchData(requests.fetchSoapTv);
+    }, [])
 
 
     // useEffect(() => {
@@ -160,7 +223,19 @@ const Context = (props) => {
     // }, [])
 
 
-    movies.push(TrendingMovies, anime, topRated, netflixOriginal, comedyMovies, actionMovies, horrorMovies, romanticMovies);
+    movies.push(TrendingMovies,
+        anime,
+        topRated,
+        netflixOriginal,
+        comedyMovies,
+        actionMovies,
+        horrorMovies,
+        romanticMovies,
+        popularTv,
+        actionTv,
+        animated,
+        soap
+    );
 
     return (
         <ApiContext.Provider value={movies}>

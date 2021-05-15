@@ -57,7 +57,7 @@ const Navbar = ({ }) => {
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 150) {
+            if (window.scrollY > 170) {
                 handleShow(true);
             }
             else {
@@ -72,8 +72,21 @@ const Navbar = ({ }) => {
     }, []);
 
 
+    const navLink = {
+        color: "#fff"
+    }
 
-
+    let browsePage = false, tvShowPage = false, listPage = false;
+    let path = location.pathname;
+    if (path === '/browse') {
+        browsePage = true;
+    }
+    else if (path === '/tvShows') {
+        tvShowPage = true;
+    }
+    else if (path === '/ListPage') {
+        listPage = true;
+    }
 
     return (
         <div id="navbar" className={`nav ${show && 'nav_black'}`}>
@@ -90,15 +103,18 @@ const Navbar = ({ }) => {
             }}>
                 <div style={{ display: "block" }} className={`nav_routes ${show && 'nav_black'}`}>
                     <RouteLink className="nav_route"
+                        style={{ color: browsePage ? "#fff" : null }}
                         to="/browse" onClick={() => setSearchTerm('')}>
                         Movies
-            </RouteLink>
+                   </RouteLink>
                     <RouteLink className="nav_route ${show && 'nav_black'}`"
+                        style={{ color: listPage ? "#fff" : null }}
                         to="/ListPage" onClick={() => setSearchTerm('')}>
                         My List
                    </RouteLink>
                     <RouteLink className="nav_route ${show && 'nav_black'}`"
-                        to="/browse" onClick={() => setSearchTerm('')}>
+                        style={{ color: tvShowPage ? "#fff" : null }}
+                        to="/tvShows" onClick={() => setSearchTerm('')}>
                         Tv Series
                    </RouteLink>
 
