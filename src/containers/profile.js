@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Header from '../components/Header/Header.component'
 import Profiles from '../components/profiles/profiles.component';
 import { ProfileContext } from '../context/profile.context';
-import logo from '../logo.svg';
+import logo from '../movieflics.svg';
 
 const ProfileContainer = ({ user, setProfile }) => {
 
@@ -25,7 +25,7 @@ const ProfileContainer = ({ user, setProfile }) => {
                     margin: "0",
                     padding: "20px"
                 }}>
-                    <Header.Logo to="/" alt="Netflix" src={logo} />
+                    <Header.Logo to="/" alt="Movieflics" src={logo} />
                 </Header.Frame>
             </Header>
 

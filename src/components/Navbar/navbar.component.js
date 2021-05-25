@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import logo from '../../logo.svg';
+import logo from '../../movieflics.svg';
 import { FirebaseContext } from '../../context/firebase';
 import './navbar.styles.css';
 import { Picture, Dropdown, Link, Group, Profile, Search, SearchIcon, SearchInput } from './navbar.style';
@@ -94,7 +94,7 @@ const Navbar = ({ }) => {
                 <img
                     className="nav_logo"
                     src={logo}
-                    alt="netflix logo"
+                    alt="movieflics logo"
                 />
             </RouteLink>
             <div style={{

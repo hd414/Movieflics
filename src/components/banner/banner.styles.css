@@ -104,5 +104,8 @@
         box-shadow: 0 1px 4px rgb(44, 43, 43);
     }
     
+    .banner{
+        min-height: 600px;
+    }
     
 }

@@ -1,4 +1,4 @@
-const API_KEY = 'cd53523310f1c138c91a1e2e2b1101f3';
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 const requests = {
     fetchTrending: `/trending/movie/week?api_key=${API_KEY}`,
