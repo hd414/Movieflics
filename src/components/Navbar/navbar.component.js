@@ -132,8 +132,10 @@ const Navbar = ({ }) => {
 
 
                 </div> */}
+
+
             {
-                showMenu && (<div className="routes">
+                showMenu ? (<div className="routes">
                     <RouteLink className="nav_route"
                         style={{ color: browsePage ? "#fff" : null }}
                         to="/browse" onClick={() => setSearchTerm('')}>
@@ -148,8 +150,27 @@ const Navbar = ({ }) => {
                         style={{ color: tvShowPage ? "#fff" : null }}
                         to="/tvShows" onClick={() => setSearchTerm('')}>
                         Tv Series
-             </RouteLink>
+                   </RouteLink>
                 </div>)
+                    : (
+                        <div className="deskroutes">
+                            <RouteLink className="desknav_route"
+                                style={{ color: browsePage ? "#fff" : null }}
+                                to="/browse" onClick={() => setSearchTerm('')}>
+                                Movies
+                       </RouteLink>
+                            <RouteLink className="desknav_route "
+                                style={{ color: listPage ? "#fff" : null }}
+                                to="/ListPage" onClick={() => setSearchTerm('')}>
+                                My List
+                       </RouteLink>
+                            <RouteLink className="desknav_route"
+                                style={{ color: tvShowPage ? "#fff" : null }}
+                                to="/tvShows" onClick={() => setSearchTerm('')}>
+                                Tv Series
+                       </RouteLink>
+                        </div>
+                    )
             }
 
             {
