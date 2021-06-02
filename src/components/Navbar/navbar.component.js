@@ -8,6 +8,8 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { SearchContext } from '../../context/search.context';
 import { Link as RouteLink } from 'react-router-dom';
+import close from '../../assets/cancel.png';
+import menu from '../../assets/menu.png';
 
 
 const Navbar = ({ }) => {
@@ -27,6 +29,7 @@ const Navbar = ({ }) => {
     const [loading, setloading] = useState(true);
     const [show, handleShow] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [showMenu, setShowMenu] = useState(false);
 
 
 
@@ -75,6 +78,14 @@ const Navbar = ({ }) => {
     const navLink = {
         color: "#fff"
     }
+    let resStyle = {};
+
+    console.log('width', window.innerWidth)
+
+    if (window.innerWidth <= 900)
+        resStyle = { left: showMenu ? "0" : "100%" };
+    else
+        resStyle = {};
 
     let browsePage = false, tvShowPage = false, listPage = false;
     let path = location.pathname;
@@ -89,7 +100,21 @@ const Navbar = ({ }) => {
     }
 
     return (
-        <div id="navbar" className={`nav ${show && 'nav_black'}`}>
+        <div id="navbar" className={`nav ${show && 'nav_black'}`} style={resStyle}>
+            {
+                !showMenu && (<div className="menu" onClick={() => { setShowMenu(!showMenu) }}>
+                    <Link to='#'><img src={menu} width="30px" alt="menu" /></Link>
+                </div>)
+            }
+            {
+                showMenu && (
+                    <div onClick={() => { setShowMenu(!showMenu) }}>
+                        <img src={close} alt="close" width="30px" className="close" />
+                    </div>
+                )
+            }
+
+
             <RouteLink to="/browse" onClick={() => setSearchTerm('')}>
                 <img
                     className="nav_logo"
@@ -97,50 +122,59 @@ const Navbar = ({ }) => {
                     alt="movieflics logo"
                 />
             </RouteLink>
-            <div style={{
-                display: 'flex',
-                width: "88%"
-            }}>
+            {/* <div
+            // style={{
+            //     display: 'flex',
+            //     width: "88%"
+            // }}
+            >
                 <div style={{ display: "block" }} className={`nav_routes ${show && 'nav_black'}`}>
-                    <RouteLink className="nav_route"
-                        style={{ color: browsePage ? "#fff" : null }}
-                        to="/browse" onClick={() => setSearchTerm('')}>
-                        Movies
-                   </RouteLink>
-                    <RouteLink className="nav_route ${show && 'nav_black'}`"
-                        style={{ color: listPage ? "#fff" : null }}
-                        to="/ListPage" onClick={() => setSearchTerm('')}>
-                        My List
-                   </RouteLink>
-                    <RouteLink className="nav_route ${show && 'nav_black'}`"
-                        style={{ color: tvShowPage ? "#fff" : null }}
-                        to="/tvShows" onClick={() => setSearchTerm('')}>
-                        Tv Series
-                   </RouteLink>
 
-                </div>
 
-                <Navbar.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-                <Profile>
+                </div> */}
 
-                    <img
-                        className="nav_avtaar"
-                        src={`/images/users/${user.photoURL}.png`}
-                        alt="avtaar"
-                    />
-                    <Dropdown>
-                        <Group>
-                            <Picture src={`/images/users/${user.photoURL}.png`} />
-                            <Link>{user.displayName}</Link>
-                        </Group>
-                        <Group>
-                            <Link onClick={() => firebase.auth().signOut()}>Sign out</Link>
-                        </Group>
-                    </Dropdown>
-                </Profile>
+            <div className="routes">
+                <RouteLink className="nav_route"
+                    style={{ color: browsePage ? "#fff" : null }}
+                    to="/browse" onClick={() => setSearchTerm('')}>
+                    Movies
+                   </RouteLink>
+                <RouteLink className="nav_route "
+                    style={{ color: listPage ? "#fff" : null }}
+                    to="/ListPage" onClick={() => setSearchTerm('')}>
+                    My List
+                   </RouteLink>
+                <RouteLink className="nav_route"
+                    style={{ color: tvShowPage ? "#fff" : null }}
+                    to="/tvShows" onClick={() => setSearchTerm('')}>
+                    Tv Series
+             </RouteLink>
             </div>
+            {
+                !showMenu && (<Navbar.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />)
+            }
+
+            <Profile>
+                <img
+                    className="nav_avtaar"
+                    src={`/images/users/${user.photoURL}.png`}
+                    alt="avtaar"
+                />
+                <Dropdown>
+                    <Group>
+                        <Picture src={`/images/users/${user.photoURL}.png`} />
+                        <Link>{user.displayName}</Link>
+                    </Group>
+                    <Group>
+                        <Link onClick={() => firebase.auth().signOut()}>Sign out</Link>
+                    </Group>
+                </Dropdown>
+            </Profile>
 
         </div>
+
+
+        // </div>
     )
 }
 

@@ -93,12 +93,14 @@ export const SearchInput = styled.input`
   &:focus {
     background-color: rgba(0, 0, 0, 0.8);
   }
-  @media (max-width: 700px) {
-    margin-left: ${({ active }) => (active === true ? '0.6rem' : '0')};
-  padding: ${({ active }) => (active === true ? '0 0.5rem' : '0')};
-  opacity: ${({ active }) => (active === true ? '1' : '0')};
-  width: ${({ active }) => (active === true ? '8rem' : '0px')};
+  @media (max-width: 900px) {
+    margin-left: 0.6rem;
+  padding:  0.5rem;
+  opacity: 1;
+  width:8rem;
   }
+
+
 `;
 
 export const Search = styled.div`
@@ -110,8 +112,10 @@ export const Search = styled.div`
     color: white;
     cursor: pointer;
   }
-  @media (max-width: 700px) {
-   
+  @media (max-width: 900px) {
+    position: fixed;
+    top:1.3rem;
+    left: 40%;
   }
 `;
 
@@ -130,4 +134,5 @@ export const SearchIcon = styled.button`
     filter: brightness(0) invert(1);
     width: 16px;
   }
+
 `;

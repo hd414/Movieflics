@@ -31,7 +31,10 @@ function App() {
     return (
       <SearchContext.Provider value={{ searchQuery, setSearchQuery, loading, setLoading }}>
         <Context>
-          <Navbar />
+          {
+            (showProfile || loading) ? null : <Navbar />
+          }
+
 
           <Switch>
 
