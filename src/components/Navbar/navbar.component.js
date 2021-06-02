@@ -132,24 +132,26 @@ const Navbar = ({ }) => {
 
 
                 </div> */}
-
-            <div className="routes">
-                <RouteLink className="nav_route"
-                    style={{ color: browsePage ? "#fff" : null }}
-                    to="/browse" onClick={() => setSearchTerm('')}>
-                    Movies
+            {
+                showMenu && (<div className="routes">
+                    <RouteLink className="nav_route"
+                        style={{ color: browsePage ? "#fff" : null }}
+                        to="/browse" onClick={() => setSearchTerm('')}>
+                        Movies
                    </RouteLink>
-                <RouteLink className="nav_route "
-                    style={{ color: listPage ? "#fff" : null }}
-                    to="/ListPage" onClick={() => setSearchTerm('')}>
-                    My List
+                    <RouteLink className="nav_route "
+                        style={{ color: listPage ? "#fff" : null }}
+                        to="/ListPage" onClick={() => setSearchTerm('')}>
+                        My List
                    </RouteLink>
-                <RouteLink className="nav_route"
-                    style={{ color: tvShowPage ? "#fff" : null }}
-                    to="/tvShows" onClick={() => setSearchTerm('')}>
-                    Tv Series
+                    <RouteLink className="nav_route"
+                        style={{ color: tvShowPage ? "#fff" : null }}
+                        to="/tvShows" onClick={() => setSearchTerm('')}>
+                        Tv Series
              </RouteLink>
-            </div>
+                </div>)
+            }
+
             {
                 !showMenu && (<Navbar.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />)
             }

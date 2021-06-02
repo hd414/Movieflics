@@ -115,7 +115,7 @@ export const Search = styled.div`
   @media (max-width: 900px) {
     position: fixed;
     top:1.3rem;
-    left: 40%;
+    left: 35%;
   }
 `;
 
