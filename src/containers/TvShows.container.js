@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import Banner from '../components/banner/banner.component'
 import Modal from '../components/modal/modal.component';
 import ModalDetails from '../components/modal/modalDetails.component';
@@ -27,7 +27,7 @@ const TvShowContainer = () => {
 
     const context = useContext(ApiContext);
     // console.log("context", context);
-    const history = useHistory();
+    // const history = useHistory();
 
     // useEffect(() => {
     //     return () => {
@@ -68,9 +68,9 @@ const TvShowContainer = () => {
         let i = 0;
         for (i = 0; i < listItems.length; i++) {
             if (movie.id === listItems[i].id) {
-                console.log("this is already added to list firend");
+                // console.log("this is already added to list firend");
                 setAddStatus(true);
-                console.log("addstatus", addStatus);
+                // console.log("addstatus", addStatus);
                 break;
             }
             else {
@@ -113,8 +113,8 @@ const TvShowContainer = () => {
                 data = data.filter(film => film.id !== movie.id);
                 setListItems(data);
 
-                console.log(res);
-                console.log("remove item");
+                // console.log(res);
+                // console.log("remove item");
             }
             else {
 
@@ -127,19 +127,19 @@ const TvShowContainer = () => {
                 data = data.filter(film => film.id !== movie.id);
                 data.push(movie);
                 setListItems(data);
-                console.log(res);
-                console.log("add item")
+                // console.log(res);
+                // console.log("add item")
             }
 
 
         }
         catch (e) {
-            console.log(e.message)
+            // console.log(e.message)
             if (e.message.includes("No document to update")) {
                 const res = await db.collection('movies').doc(user.uid).set({
                     id: firebase.firestore.FieldValue.arrayUnion(movie)
                 });
-                console.log(res);
+                // console.log(res);
             }
         }
 

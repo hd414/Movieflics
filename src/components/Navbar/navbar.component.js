@@ -80,7 +80,7 @@ const Navbar = ({ }) => {
     }
     let resStyle = {};
 
-    console.log('width', window.innerWidth)
+    // console.log('width', window.innerWidth)
 
     if (window.innerWidth <= 900)
         resStyle = { left: showMenu ? "0" : "100%" };

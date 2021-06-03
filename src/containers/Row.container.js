@@ -115,8 +115,8 @@ const RowContainer = () => {
                 data = data.filter(film => film.id !== movie.id);
                 setListItems(data);
 
-                console.log(res);
-                console.log("remove item");
+                // console.log(res);
+                // console.log("remove item");
             }
             else {
 
@@ -129,19 +129,19 @@ const RowContainer = () => {
                 data = data.filter(film => film.id !== movie.id);
                 data.push(movie);
                 setListItems(data);
-                console.log(res);
-                console.log("add item")
+                // console.log(res);
+                // console.log("add item")
             }
 
 
         }
         catch (e) {
-            console.log(e.message)
+            // console.log(e.message)
             if (e.message.includes("No document to update")) {
                 const res = await db.collection('movies').doc(user.uid).set({
                     id: firebase.firestore.FieldValue.arrayUnion(movie)
                 });
-                console.log(res);
+                // console.log(res);
             }
         }
 

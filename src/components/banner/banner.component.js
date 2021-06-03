@@ -37,10 +37,10 @@ const Banner = ({ BackdropHandler, Movies }) => {
             setMovie(Movies[Math.floor(Math.random() * Movies.length - 1)]);
 
 
-            console.log(Math.floor(Math.random() * Movies.length - 1))
+            // console.log(Math.floor(Math.random() * Movies.length - 1))
 
 
-            console.log('banner ', movie);
+            // console.log('banner ', movie);
             // return request;
         }
         fetchData();
@@ -64,7 +64,7 @@ const Banner = ({ BackdropHandler, Movies }) => {
     }
 
     // if(movie===undefined){
-    console.log(movie);
+    // console.log(movie);
     // }
     // if (movie === undefined) {
     //     history.push('/browse')
@@ -82,7 +82,7 @@ const Banner = ({ BackdropHandler, Movies }) => {
                         rgba(0, 0, 0, 0.4)
                       ),url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path ? movie?.backdrop_path : initVal.backdrop_path}")`,
                     height: window.outerHeight,
-                    width: window.outerWidth
+                    // width: window.outerWidth
                 }}
 
             >
