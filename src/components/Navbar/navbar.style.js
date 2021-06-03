@@ -94,10 +94,10 @@ export const SearchInput = styled.input`
     background-color: rgba(0, 0, 0, 0.8);
   }
   @media (max-width: 900px) {
-    margin-left: 0.6rem;
-  padding:  0.5rem;
-  opacity: 1;
-  width:8rem;
+    margin-left: ${({ active }) => (active === true ? '0.64rem' : '0')};
+  padding: ${({ active }) => (active === true ? '0 0.5rem' : '0')};
+  opacity: ${({ active }) => (active === true ? '1' : '0')};
+  width: ${({ active }) => (active === true ? '8rem' : '0px')};
   }
 
 

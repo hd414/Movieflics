@@ -59,7 +59,14 @@
 }
 
 
-
+.banner{
+    padding: 10px;
+    resize: both;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position:top;
+    min-height: 100vh;
+}
 
 @media screen and (max-width:600px) {
 
@@ -107,5 +114,10 @@
     .banner{
         min-height: 600px;
     }
+    
+}
+
+
+@media screen and (max-height:) {
     
 }
