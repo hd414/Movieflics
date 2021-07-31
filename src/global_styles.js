@@ -24,17 +24,17 @@ export const GlobalStyles = createGlobalStyle`
    display:flex;
     }
 }
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   width: 0.5em;
 }
- 
-body::-webkit-scrollbar-track {
+  */
+/* body::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
+} */
  
-body::-webkit-scrollbar-thumb {
+/* body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
-}
+} */
 
 `;
