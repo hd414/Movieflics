@@ -226,7 +226,7 @@ Navbar.Search = function NavbarSearch({ searchTerm, setSearchTerm, ...restProps 
                 placeholder="Search Movies and Series"
                 active={searchActive}
                 data-testid="search-input"
-                autoFocus
+            // autoFocus
             />
         </Search>
     );
